@@ -3,7 +3,19 @@ pages:
   script:
     - mkdir .public
     - cp -r dist/* .public
-    - echo '/ /main/blog-posts.html 302' > .public/_redirects
+    - |
+      cat > .public/index.html << 'EOF'
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta http-equiv="refresh" content="0; url=main/blog-posts.html">
+        <title>Redirecting...</title>
+      </head>
+      <body>
+        <p>Redirecting to <a href="main/blog-posts.html">blog-posts</a>...</p>
+      </body>
+      </html>
+      EOF
     - mv .public public
   artifacts:
     paths:
