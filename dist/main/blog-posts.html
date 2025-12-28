@@ -122,6 +122,39 @@
       -webkit-box-orient: vertical !important;
       overflow: hidden !important;
     }
+
+    /* Media Highlight 背景カード - ホバー無効 */
+    #media-highlight-section > .col-12 > .card.bg-light-subtle {
+      transform: none !important;
+      box-shadow: none !important;
+      transition: none !important;
+    }
+    #media-highlight-section > .col-12 > .card.bg-light-subtle:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Event Pick Up 背景カード - ホバー無効 */
+    #event-pickup-section > .col-12 > .card.bg-light-subtle {
+      transform: none !important;
+      box-shadow: none !important;
+      transition: none !important;
+    }
+    #event-pickup-section > .col-12 > .card.bg-light-subtle:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    /* Event Pick Up カード高さ揃え */
+    #event-pickup-section .card-body .row > [class*="col-"] {
+      display: flex;
+    }
+    #event-pickup-section .event-title {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
 </head>
 
@@ -1700,35 +1733,13 @@
                             <div class="row">
                               <div class="col-6">
                                 <div class="position-relative">
-                                  <a href="../main/app-chat.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-chat.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Chat Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">New messages arrived</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-invoice.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-invoice.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">Invoice App</h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get latest invoice</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-contact2.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
                                     <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                       <img src="../assets/images/svgs/icon-dd-mobile.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Contact Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">2 Unsaved Contacts</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">勤怠管理</h6>
+                                      <span class="fs-2 d-block text-body-secondary">出退勤の打刻・確認</span>
                                     </div>
                                   </a>
                                   <a href="../main/app-email.html" class="d-flex align-items-center pb-9 position-relative">
@@ -1736,23 +1747,8 @@
                                       <img src="../assets/images/svgs/icon-dd-message-box.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">Email App</h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get new emails</span>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="col-6">
-                                <div class="position-relative">
-                                  <a href="../main/page-user-profile.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-cart.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        User Profile
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">learn more information</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">メール</h6>
+                                      <span class="fs-2 d-block text-body-secondary">社内メールの確認</span>
                                     </div>
                                   </a>
                                   <a href="../main/app-calendar.html" class="d-flex align-items-center pb-9 position-relative">
@@ -1760,32 +1756,39 @@
                                       <img src="../assets/images/svgs/icon-dd-date.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Calendar App
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get dates</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">カレンダー</h6>
+                                      <span class="fs-2 d-block text-body-secondary">予定の確認・登録</span>
                                     </div>
                                   </a>
-                                  <a href="../main/app-contact.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-lifebuoy.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Contact List Table
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">Add new contact</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-notes.html" class="d-flex align-items-center pb-9 position-relative">
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="position-relative">
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
                                     <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                       <img src="../assets/images/svgs/icon-dd-application.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Notes Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">To-do and Daily tasks</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">MORINAVI</h6>
+                                      <span class="fs-2 d-block text-body-secondary">社内ナビゲーション</span>
+                                    </div>
+                                  </a>
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
+                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
+                                      <img src="../assets/images/svgs/icon-dd-lifebuoy.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
+                                    </div>
+                                    <div>
+                                      <h6 class="mb-1 fw-semibold fs-3">システム</h6>
+                                      <span class="fs-2 d-block text-body-secondary">各種システムへのアクセス</span>
+                                    </div>
+                                  </a>
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
+                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
+                                      <img src="../assets/images/svgs/icon-dd-chat.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
+                                    </div>
+                                    <div>
+                                      <h6 class="mb-1 fw-semibold fs-3">通報・相談窓口</h6>
+                                      <span class="fs-2 d-block text-body-secondary">お問い合わせ・相談</span>
                                     </div>
                                   </a>
                                 </div>
@@ -1795,7 +1798,7 @@
                           <div class="row align-items-center py-3">
                             <div class="col-8">
                               <a class="fw-semibold d-flex align-items-center lh-1" href="javascript:void(0)">
-                                <i class="ti ti-help fs-6 me-2"></i>Frequently Asked Questions
+                                <i class="ti ti-help fs-6 me-2"></i>よくある質問
                               </a>
                             </div>
                             <div class="col-4">
@@ -2297,35 +2300,13 @@
                             <div class="row">
                               <div class="col-6">
                                 <div class="position-relative">
-                                  <a href="../main/app-chat.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-chat.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Chat Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">New messages arrived</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-invoice.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-invoice.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">Invoice App</h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get latest invoice</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-contact2.html" class="d-flex align-items-center pb-9 position-relative">
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
                                     <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                       <img src="../assets/images/svgs/icon-dd-mobile.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Contact Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">2 Unsaved Contacts</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">勤怠管理</h6>
+                                      <span class="fs-2 d-block text-body-secondary">出退勤の打刻・確認</span>
                                     </div>
                                   </a>
                                   <a href="../main/app-email.html" class="d-flex align-items-center pb-9 position-relative">
@@ -2333,23 +2314,8 @@
                                       <img src="../assets/images/svgs/icon-dd-message-box.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">Email App</h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get new emails</span>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                              <div class="col-6">
-                                <div class="position-relative">
-                                  <a href="../main/page-user-profile.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-cart.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        User Profile
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">learn more information</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">メール</h6>
+                                      <span class="fs-2 d-block text-body-secondary">社内メールの確認</span>
                                     </div>
                                   </a>
                                   <a href="../main/app-calendar.html" class="d-flex align-items-center pb-9 position-relative">
@@ -2357,32 +2323,39 @@
                                       <img src="../assets/images/svgs/icon-dd-date.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Calendar App
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">Get dates</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">カレンダー</h6>
+                                      <span class="fs-2 d-block text-body-secondary">予定の確認・登録</span>
                                     </div>
                                   </a>
-                                  <a href="../main/app-contact.html" class="d-flex align-items-center pb-9 position-relative">
-                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
-                                      <img src="../assets/images/svgs/icon-dd-lifebuoy.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
-                                    </div>
-                                    <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Contact List Table
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">Add new contact</span>
-                                    </div>
-                                  </a>
-                                  <a href="../main/app-notes.html" class="d-flex align-items-center pb-9 position-relative">
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="position-relative">
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
                                     <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
                                       <img src="../assets/images/svgs/icon-dd-application.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
                                     </div>
                                     <div>
-                                      <h6 class="mb-1 fw-semibold fs-3">
-                                        Notes Application
-                                      </h6>
-                                      <span class="fs-2 d-block text-body-secondary">To-do and Daily tasks</span>
+                                      <h6 class="mb-1 fw-semibold fs-3">MORINAVI</h6>
+                                      <span class="fs-2 d-block text-body-secondary">社内ナビゲーション</span>
+                                    </div>
+                                  </a>
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
+                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
+                                      <img src="../assets/images/svgs/icon-dd-lifebuoy.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
+                                    </div>
+                                    <div>
+                                      <h6 class="mb-1 fw-semibold fs-3">システム</h6>
+                                      <span class="fs-2 d-block text-body-secondary">各種システムへのアクセス</span>
+                                    </div>
+                                  </a>
+                                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
+                                    <div class="text-bg-light rounded-1 me-3 p-6 d-flex align-items-center justify-content-center">
+                                      <img src="../assets/images/svgs/icon-dd-chat.svg" alt="modernize-img" class="img-fluid" width="24" height="24" />
+                                    </div>
+                                    <div>
+                                      <h6 class="mb-1 fw-semibold fs-3">通報・相談窓口</h6>
+                                      <span class="fs-2 d-block text-body-secondary">お問い合わせ・相談</span>
                                     </div>
                                   </a>
                                 </div>
@@ -2392,7 +2365,7 @@
                           <div class="row align-items-center py-3">
                             <div class="col-8">
                               <a class="fw-semibold d-flex align-items-center lh-1" href="javascript:void(0)">
-                                <i class="ti ti-help fs-6 me-2"></i>Frequently Asked Questions
+                                <i class="ti ti-help fs-6 me-2"></i>よくある質問
                               </a>
                             </div>
                             <div class="col-4">
@@ -3805,14 +3778,181 @@
             </div>
             </div>
             </div>
+
+            <!-- Recent Articles (within col-lg-9) -->
+            <h2 class="fs-8 fw-bolder mb-4 mt-7">Recent Articles</h2>
+            <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Designing for user experience: the essential ux principles
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Mastering CSS Grid: a comprehensive guide for layouts
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Building responsive web apps with modern frameworks
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Introduction to TypeScript for JavaScript developers
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Getting started with React hooks and state management
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="d-flex">
+                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                          Web Development
+                        </p>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Best practices for API design and documentation
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-lg-3" id="recent-comments-col">
+            <!-- Banner 1 -->
+            <div class="card mb-3">
+              <div class="card-body p-3">
+                <div class="d-flex gap-3">
+                  <img src="../assets/images/blog/blog-img1.jpg" alt="banner" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="fw-bold mb-1 text-dark">森ビルだより</h6>
+                    <span class="fs-2 text-primary">2025.03.25</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Banner 2 -->
+            <div class="card mb-4">
+              <div class="card-body p-3">
+                <div class="d-flex gap-3">
+                  <img src="../assets/images/blog/blog-img2.jpg" alt="banner" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="fw-bold mb-1 text-dark">麻布台ヒルズ特集</h6>
+                    <span class="fs-2 text-primary">2025.03.20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Recent Comments -->
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title mb-0">Recent Comments</h4>
               </div>
-              <div class="comment-widgets scrollable mb-2 common-widget" style="height: 400px" data-simplebar="">
+              <div class="comment-widgets scrollable mb-2 common-widget" style="height: 700px" data-simplebar="">
                 <!-- Comment Row -->
                 <div class="comment-row border-bottom p-3">
                   <div class="comment-text w-100">
@@ -3841,9 +3981,45 @@
                   </div>
                 </div>
                 <!-- Comment Row -->
-                <div class="comment-row p-3">
+                <div class="comment-row border-bottom p-3">
                   <div class="comment-text w-100">
                     <h6 class="fw-medium comment-title">How optimize your website's performance with modern techniques</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Designing for user experience: the essential ux principles</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Mastering CSS Grid: a comprehensive guide for layouts</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Building responsive web apps with modern frameworks</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Introduction to TypeScript for JavaScript developers</h6>
                     <div class="comment-footer mt-2">
                       <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
                     </div>
@@ -3855,264 +4031,312 @@
         </div>
         <!-- Leadership Section End -->
 
-        <div class="row mt-7">
-          <div class="col-lg-4 col-md-6">
-            <div class="card rounded-3 overflow-hidden">
-              <a href="../main/frontend-blogdetailpage.html" class="position-relative">
-                <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 ms-7 mb-n9">
-                  <img src="../assets/images/profile/user-3.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
-                </div>
-              </a>
-              <div class="mt-10 px-7 pb-7">
-                <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
-                      Web Development
-                    </p>
-                </div>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
-                    Designing for user experience: the essential ux principles
+        <!-- Event Pick Up Section -->
+        <div class="row mt-7" id="event-pickup-section">
+          <div class="col-12">
+            <div class="card bg-light-subtle">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <i class="ti ti-sparkles text-dark fs-6"></i>
+                    <h4 class="fw-bold mb-0">Event Pick Up</h4>
+                    <span class="text-muted fs-3">イベントピックアップ</span>
+                  </div>
+                  <a href="#" class="d-flex align-items-center gap-2 text-dark text-decoration-none">
+                    <span class="rounded-circle border border-dark d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
+                      <i class="ti ti-chevron-right fs-4"></i>
+                    </span>
+                    <span class="fw-semibold">View more</span>
                   </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    User experience is at the heart of successful web design. Explore the essential
-                    principles to create user-friendly interfaces.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img1.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
                       </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card rounded-3 overflow-hidden">
-              <a href="../main/frontend-blogdetailpage.html" class="position-relative">
-                <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 ms-7 mb-n9">
-                  <img src="../assets/images/profile/user-2.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
-                </div>
-              </a>
-              <div class="mt-10 px-7 pb-7">
-                <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
-                      Web Development
-                    </p>
-                </div>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
-                    Getting started with headless cms: the pros and cons
-                  </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    Headless CMS is gaining popularity, but is it right for your project? Understand
-                    the advantages and disadvantages before making the switch.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img2.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
                       </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="card rounded-3 overflow-hidden">
-              <a href="../main/frontend-blogdetailpage.html" class="position-relative">
-                <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 ms-7 mb-n9">
-                  <img src="../assets/images/profile/user-5.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
-                </div>
-              </a>
-              <div class="mt-10 px-7 pb-7">
-                <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
-                      Web Development
-                    </p>
-                </div>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
-                    Why every developer should learn version control
-                  </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    Version control is a crucial skill for any developer. Find out why it matters
-                    and how it can improve your workflow.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img3.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
                       </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card rounded-3 overflow-hidden">
-              <a href="../main/frontend-blogdetailpage.html" class="position-relative">
-                <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 ms-7 mb-n9">
-                  <img src="../assets/images/profile/user-2.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
-                </div>
-              </a>
-              <div class="mt-10 px-7 pb-7 h-100">
-                <div class="d-flex gap-3 flex-column h-100 justify-content-between">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
-                      Web Development
-                    </p>
-                </div>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
-                    Creating animations with css: a beginner's guide
-                  </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    CSS animations can bring your website to life. Learn how to create smooth,
-                    engaging animations with this step-by-step guide.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img4.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
                       </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="card rounded-3 overflow-hidden">
-              <a href="../main/frontend-blogdetailpage.html" class="position-relative">
-                <img src="../assets/images/blog/blog-img9.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 ms-7 mb-n9">
-                  <img src="../assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
-                </div>
-              </a>
-              <div class="mt-10 px-7 pb-7">
-                <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
-                      Web Development
-                    </p>
-                </div>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
-                    How to start freelance career in web development
-                  </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    Thinking about going freelance? Discover the essential steps to building a
-                    successful career in web development.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                      </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img5.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card rounded-3 overflow-hidden h-100">
+                      <a href="javascript:void(0)" class="position-relative">
+                        <img src="../assets/images/blog/blog-img6.jpg" alt="event image" class="w-100 img-fluid">
+                      </a>
+                      <div class="mt-3 px-3 pb-3 d-flex flex-column flex-grow-1">
+                        <p class="mb-2 fs-2 text-muted">2025.12.15 - 2026.1.30</p>
+                        <a href="javascript:void(0)" class="fs-3 fw-semibold event-title text-dark flex-grow-1">
+                          記事タイトルが入る場所。最大3行まで入る想定です。
+                        </a>
+                        <div class="mt-auto pt-3">
+                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-      </div>
-    </section>
-    <!-- ------------------------------------- -->
-    <!-- List End -->
-    <!-- ------------------------------------- -->
+        </div>
+        <!-- Event Pick Up Section End -->
 
-    <!-- ------------------------------------- -->
-    <!-- Develop Start -->
-    <!-- ------------------------------------- -->
-    <section class="mb-5 mb-md-14 mb-lg-12">
-      <div class="custom-container">
-        <div class="bg-primary-subtle rounded-3 position-relative overflow-hidden">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="py-lg-12 ps-lg-12 py-5 px-lg-0 px-9">
-                <h2 class="fs-10 fw-bolder text-lg-start text-center">
-                  Develop with feature-rich Bootstrap Dashboard
-                </h2>
-                <div class="d-flex justify-content-lg-start justify-content-center gap-3 my-4 flex-sm-nowrap flex-wrap">
-                  <a href="../main/authentication-login.html" class="btn btn-primary py-6 px-9">Member Login</a>
-                  <a href="../main/authentication-register.html" class="btn btn-outline-primary py-6 px-9">Register as Member</a>
-                </div>
-                <p class="fs-3 text-lg-start text-center mb-0">
-                  <span class="fw-bolder">One-time purchase</span> - no recurring fees.
-                </p>
-              </div>
+        <!-- Media Highlight Section Start -->
+        <div class="row mt-7" id="media-highlight-section">
+          <div class="col-12">
+            <div class="d-flex align-items-center gap-4 mb-5">
+              <h2 class="fs-8 fw-bolder mb-0">Media Highlight</h2>
+              <p class="fs-4 mb-0 text-muted">注目のメディア記事をピックアップ</p>
             </div>
-            <div class="col-lg-6 d-lg-block d-none">
-              <img src="../assets/images/frontend-pages/design-collection.png" alt="banner" class="position-absolute develop-feature-rich">
+            <div class="card bg-light-subtle">
+              <div class="card-body">
+                <!-- Media Columns -->
+                <div class="row">
+                  <!-- HILLS LIFE DAILY -->
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="mb-3">
+                      <span class="fs-5 fw-bold text-dark">HILLS LIFE DAILY</span>
+                    </div>
+                    <!-- Article 1 -->
+                    <div class="card mb-3">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img1.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">六本木ヒルズで開催される最新アートイベント情報</a>
+                            <span class="fs-2 text-muted">2025.03.25</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="card">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img2.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">春の新メニューが続々登場するレストラン特集</a>
+                            <span class="fs-2 text-muted">2025.03.22</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- note -->
+                  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="mb-3">
+                      <span class="fs-5 fw-bold text-dark">note</span>
+                    </div>
+                    <!-- Article 1 -->
+                    <div class="card mb-3">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img3.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">クリエイターが語るデザインの未来とテクノロジー</a>
+                            <span class="fs-2 text-muted">2025.03.24</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="card">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img4.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">スタートアップ企業のブランディング戦略とは</a>
+                            <span class="fs-2 text-muted">2025.03.21</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- H/P -->
+                  <div class="col-lg-4 col-md-6">
+                    <div class="mb-3">
+                      <span class="fs-5 fw-bold text-dark">H/P</span>
+                    </div>
+                    <!-- Article 1 -->
+                    <div class="card mb-3">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img5.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">最新テクノロジーが変える働き方改革の現場</a>
+                            <span class="fs-2 text-muted">2025.03.23</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="card">
+                      <div class="card-body p-3">
+                        <div class="d-flex gap-3">
+                          <img src="../assets/images/blog/blog-img6.jpg" alt="article" class="rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                          <div class="d-flex flex-column justify-content-center">
+                            <a href="#" class="fs-3 fw-semibold text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">サステナブルな都市開発の最新トレンド</a>
+                            <span class="fs-2 text-muted">2025.03.20</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <!-- Media Highlight Section End -->
+
+        <!-- Footer Section Start -->
+        <footer class="mt-7 pt-5 border-top">
+          <div class="text-center mb-4">
+            <h3 class="fw-bold mb-4" style="letter-spacing: 0.3em;">MORINET</h3>
+            <div class="d-flex justify-content-center gap-0">
+              <a href="#" class="btn btn-outline-dark rounded-0 px-3 py-2 border">n</a>
+              <a href="#" class="btn btn-outline-dark rounded-0 px-3 py-2 border">f</a>
+              <a href="#" class="btn btn-outline-dark rounded-0 px-3 py-2 border">𝕏</a>
+              <a href="#" class="btn btn-outline-dark rounded-0 px-3 py-2 border"><i class="ti ti-brand-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="row mt-5 mb-5">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">麻布台ヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">虎ノ門ヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">六本木ヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">アークヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">表参道ヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">ラフォーレ原宿</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">上海環球金融中心</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビル デジタルアート ミュージアム</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビルコーポレート</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">MORI LIVING</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">アカデミーヒルズ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">六本木ヒルズクラブ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">アークヒルズクラブ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">ヒルズスパ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">ヒルズアプリ/ヒルズカード</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">WORKERS BOARD</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">HILLS LIFE DAILY</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">ヒルズゴルフ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">eHills Club</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビルホスピタリティコーポレーション</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビル・インベストメントマネジメント</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビル都市企画</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">プライムステージ</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ヒルズリート投資法人</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビル不動産投資顧問</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">M&Iアート</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビルエステートサービス</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">森ビル保険サービス</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">ラフォーレエンジニアリング</a></li>
+                <li class="mb-2"><a href="#" class="text-dark text-decoration-none">六本木ファーストビル</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-top pt-4 pb-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <p class="mb-0 text-dark">© Copyright Mori Building Co., Ltd. All Rights Reserved.</p>
+              <div class="d-flex gap-4">
+                <a href="#" class="text-dark text-decoration-none">プライバシーポリシー</a>
+                <a href="#" class="text-dark text-decoration-none">利用規約</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- Footer Section End -->
+
       </div>
-    </section>
-    <!-- ------------------------------------- -->
-    <!-- Develop End -->
-    <!-- ------------------------------------- -->
-        </div>
-      </div>
-      <script>
+    </div>
+    <script>
   function handleColorTheme(e) {
     document.documentElement.setAttribute("data-color-theme", e);
   }
