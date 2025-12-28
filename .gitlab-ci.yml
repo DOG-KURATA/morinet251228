@@ -3,6 +3,7 @@ pages:
   script:
     - mkdir .public
     - cp -r dist/* .public
+    - echo '/ /main/blog-posts.html 302' > .public/_redirects
     - mv .public public
   artifacts:
     paths:
