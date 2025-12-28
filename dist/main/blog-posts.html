@@ -12,11 +12,120 @@
 
   <!-- Core Css -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css" />
 
   <title>Modernize Bootstrap Admin</title>
+  <style>
+    /* Hover Effect: Lift */
+    body.hover-lift .card,
+    body.hover-lift .leadership-carousel .item > div {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+    }
+    body.hover-lift .card:hover,
+    body.hover-lift .leadership-carousel .item > div:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    /* Local Topics セクション - ホバー効果はカード内で完結 */
+    #local-topics-carousel-col {
+      overflow: hidden;
+      padding-top: 15px;
+      margin-top: -15px;
+    }
+    .leadership-carousel .owl-stage {
+      display: flex;
+    }
+
+    /* Hover Effect: Glow */
+    body.hover-glow .card,
+    body.hover-glow .leadership-carousel .item > div {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    body.hover-glow .card:hover,
+    body.hover-glow .leadership-carousel .item > div:hover {
+      box-shadow: 0 0 20px rgba(93, 135, 255, 0.5), 0 0 40px rgba(93, 135, 255, 0.3);
+      border-color: rgba(93, 135, 255, 0.5);
+    }
+    /* Hover Effect: Scale */
+    body.hover-scale .card,
+    body.hover-scale .leadership-carousel .item > div {
+      transition: transform 0.3s ease;
+    }
+    body.hover-scale .card:hover,
+    body.hover-scale .leadership-carousel .item > div:hover {
+      transform: scale(1.03);
+    }
+    /* Hover Effect: Tilt */
+    body.hover-tilt .card,
+    body.hover-tilt .leadership-carousel .item > div {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    body.hover-tilt .card:hover,
+    body.hover-tilt .leadership-carousel .item > div:hover {
+      transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    /* Card Height: Clamp (タイトル3行、説明文2行) */
+    body.card-title-clamp .card a.fs-15.fw-bolder {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    body.card-title-clamp .card .truncated-text {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Card Height: Fixed Card (Featured Content以外) */
+    body.card-fixed-height .container-fluid > .row > [class*="col-"] {
+      margin-bottom: 1.5rem;
+    }
+    body.card-fixed-height .container-fluid > .row > [class*="col-"] > .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body.card-fixed-height .container-fluid > .row > [class*="col-"] > .card > div:last-child {
+      flex-grow: 1;
+    }
+    /* Featured Contentの余白をリセット */
+    body.card-fixed-height #featured-content {
+      height: auto;
+      margin-bottom: 0;
+    }
+    body.card-fixed-height #featured-content .row > [class*="col-"] {
+      margin-bottom: 0;
+    }
+
+    /* Local Topics カルーセル タイトル2行制限・フォントサイズ調整 */
+    .leadership-carousel .item .card a.fs-15.fw-bolder {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      font-size: 1.0rem !important;
+    }
+
+    /* Recent Comments タイトル3行制限 */
+    .comment-title {
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3 !important;
+      line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+  </style>
 </head>
 
-<body class="link-sidebar">
+<body class="link-sidebar hover-lift">
   <!-- Preloader -->
   <div class="preloader">
     <img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
@@ -3353,14 +3462,11 @@
     <!-- ------------------------------------- -->
     <section class="pb-4 pb-md-5 pb-lg-14">
       <div class="container-fluid">
-        <div class="card data-shadow rounded-3 mb-7">
+        <div class="card data-shadow rounded-3 mb-7" id="featured-content">
           <div class="row">
             <div class="col-lg-6 pe-lg-0">
               <div class="blog-bg d-flex flex-column justify-content-between p-9 h-100 rounded-start-3 flex-grow-1">
                 <img src="../assets/images/profile/user-6.jpg" alt="user" width="44" height="44" class="rounded-circle">
-                <div class="d-flex justify-content-end">
-                  <p class="fs-2 py-1 px-2 bg-white rounded-pill mb-0">2 min Read</p>
-                </div>
               </div>
             </div>
             <div class="col-lg-6 ps-lg-0">
@@ -3378,36 +3484,31 @@
                     Learn the best practices for creating responsive websites that look great on any
                     device, from mobile phones to desktops.
                   </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                      </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                    </div>
-                        </div>
+                  <div class="d-flex gap-9">
                     <div class="d-flex gap-2">
-                      <i class="ti ti-circle"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
-                        </div>
-                        </div>
-                      </div>
+                      <i class="ti ti-eye fs-5 text-dark"></i>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
                     </div>
+                    <div class="d-flex gap-2">
+                      <i class="ti ti-message fs-5 text-dark"></i>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
 
           <div class="col-lg-3 col-md-6">
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-            </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-3.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                       </div>
@@ -3422,26 +3523,10 @@
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     The future of web: what's next in 2024?
                   </a>
-                  <p class="mb-0 fs-4 truncated-text">
-                    Explore the latest trends and technologies that are shaping the future of web
-                    development, including AI-driven design and serverless architectures.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                        </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                        </div>
-                        </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -3450,9 +3535,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3467,25 +3549,9 @@
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     Top 5 javascript frameworks to learn this year
                   </a>
-                  <a href="../main/frontend-blogdetailpage.html" class="fs-4 truncated-text">
-                    With so many options available, find out which javascript frameworks are worth
-                    your time and effort in 2024.
-                  </a>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                      </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
-                    </div>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                   </div>
                 </div>
@@ -3495,9 +3561,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-5.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3512,26 +3575,9 @@
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     Understanding web accessibility: for beginners
                   </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    Accessibility is more important than ever. Discover the key principles and
-                    techniques to make your website accessible to all users.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                      </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
-                    </div>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                   </div>
                 </div>
@@ -3542,9 +3588,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3559,38 +3602,264 @@
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     How optimize your website's performance with caching
                   </a>
-
-                  <p class="mb-0 fs-4 truncated-text">
-                    Caching can significantly improve your website's speed and user experience.
-                    Learn how to implement it effectively.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex gap-9">
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-eye fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">6941</p>
-                      </div>
-                      <div class="d-flex gap-2">
-                        <i class="ti ti-message fs-5 text-dark"></i>
-                        <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
-                    </div>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+        </div>
+
+        <!-- Leadership Section -->
+        <div class="row mt-7" id="local-topics-section">
+          <div class="col-lg-9" id="local-topics-carousel-col">
+            <div class="d-flex align-items-center gap-4 mb-5" id="local-topics-header">
+              <h2 class="fs-10 fw-bolder mb-0">Local Topics</h2>
+              <p class="fs-4 mb-0 text-muted">Our robust analytics offer rich insights</p>
+            </div>
+            <div class="owl-carousel leadership-carousel owl-theme">
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    The future of web: what's next in 2024?
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    Top 5 javascript frameworks to learn this year
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    Understanding web accessibility: for beginners
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    How optimize your website's performance with caching
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    The future of web: what's next in 2024?
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    Top 5 javascript frameworks to learn this year
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    Understanding web accessibility: for beginners
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="card rounded-3 overflow-hidden">
+              <a href="javascript:void(0)" class="position-relative">
+                <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+              </a>
+              <div class="mt-4 px-7 pb-7">
+                <div class="d-flex gap-3 flex-column">
+                  <div class="d-flex">
+                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0">
+                      Web Development
+                    </p>
+                  </div>
+                  <a href="javascript:void(0)" class="fs-15 fw-bolder">
+                    How optimize your website's performance with caching
+                  </a>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          <div class="col-lg-3" id="recent-comments-col">
+            <!-- Recent Comments -->
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-0">Recent Comments</h4>
+              </div>
+              <div class="comment-widgets scrollable mb-2 common-widget" style="height: 400px" data-simplebar="">
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">The future of web: what's next in 2024?</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Top 5 javascript frameworks to learn this year</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row border-bottom p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">Understanding web accessibility: for beginners</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Comment Row -->
+                <div class="comment-row p-3">
+                  <div class="comment-text w-100">
+                    <h6 class="fw-medium comment-title">How optimize your website's performance with modern techniques</h6>
+                    <div class="comment-footer mt-2">
+                      <span class="text-muted fw-normal fs-2 d-block">2025.12.15</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Leadership Section End -->
+
+        <div class="row mt-7">
           <div class="col-lg-4 col-md-6">
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-3.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3621,9 +3890,9 @@
                         <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                     </div>
                   </div>
@@ -3634,9 +3903,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-2.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3667,9 +3933,9 @@
                         <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                     </div>
                   </div>
@@ -3681,9 +3947,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-5.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3714,9 +3977,9 @@
                         <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                     </div>
                   </div>
@@ -3727,9 +3990,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-2.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3760,9 +4020,9 @@
                         <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                     </div>
                   </div>
@@ -3773,9 +4033,6 @@
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
                 <img src="../assets/images/blog/blog-img9.jpg" alt="blog image" class="w-100 img-fluid">
-                <div class="position-absolute bottom-0 end-0 me-9 mb-3">
-                  <p class="text-dark fs-2 px-2 rounded-pill bg-white mb-0 ">2 min Read</p>
-                </div>
                 <div class="position-absolute bottom-0 ms-7 mb-n9">
                   <img src="../assets/images/profile/user-1.jpg" alt="user" class="rounded-circle" width="44px" height="44px">
                 </div>
@@ -3806,9 +4063,9 @@
                         <p class="mb-0 fs-2 fw-semibold text-dark">3</p>
                       </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2 mt-2">
                       <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">Tue, May 2</p>
+                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                     </div>
                     </div>
                   </div>
@@ -4004,6 +4261,63 @@
               <i class="icon ti ti-border-none fs-7 me-2"></i>Shadow
             </label>
           </div>
+
+          <h6 class="mt-5 fw-semibold fs-4 mb-2">Hover Effect</h6>
+
+          <div class="d-flex flex-row flex-wrap gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" name="hover-effect" id="hover-lift" autocomplete="off" checked />
+            <label class="btn p-9 btn-outline-primary" for="hover-lift">
+              <i class="icon ti ti-arrow-up fs-7 me-2"></i>Lift
+            </label>
+
+            <input type="radio" class="btn-check" name="hover-effect" id="hover-glow" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="hover-glow">
+              <i class="icon ti ti-sun fs-7 me-2"></i>Glow
+            </label>
+
+            <input type="radio" class="btn-check" name="hover-effect" id="hover-scale" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="hover-scale">
+              <i class="icon ti ti-maximize fs-7 me-2"></i>Scale
+            </label>
+
+            <input type="radio" class="btn-check" name="hover-effect" id="hover-tilt" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="hover-tilt">
+              <i class="icon ti ti-3d-cube-sphere fs-7 me-2"></i>Tilt
+            </label>
+          </div>
+
+          <h6 class="mt-5 fw-semibold fs-4 mb-2">Featured Content</h6>
+
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" name="featured-content" id="featured-show" autocomplete="off" checked />
+            <label class="btn p-9 btn-outline-primary" for="featured-show">
+              <i class="icon ti ti-eye fs-7 me-2"></i>Show
+            </label>
+
+            <input type="radio" class="btn-check" name="featured-content" id="featured-hide" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="featured-hide">
+              <i class="icon ti ti-eye-off fs-7 me-2"></i>Hide
+            </label>
+          </div>
+
+          <h6 class="mt-5 fw-semibold fs-4 mb-2">Card Height</h6>
+
+          <div class="d-flex flex-row flex-wrap gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" name="card-height" id="card-height-none" autocomplete="off" checked />
+            <label class="btn p-9 btn-outline-primary" for="card-height-none">
+              <i class="icon ti ti-layout fs-7 me-2"></i>Default
+            </label>
+
+            <input type="radio" class="btn-check" name="card-height" id="card-title-clamp" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="card-title-clamp">
+              <i class="icon ti ti-text-wrap-disabled fs-7 me-2"></i>Clamp
+            </label>
+
+            <input type="radio" class="btn-check" name="card-height" id="card-fixed-height" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="card-fixed-height">
+              <i class="icon ti ti-arrows-vertical fs-7 me-2"></i>Fixed
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -4192,6 +4506,7 @@
   </div>
   <div class="dark-transparent sidebartoggler"></div>
   <!-- Import Js Files -->
+  <script src="../assets/js/vendor.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
   <script src="../assets/js/theme/app.init.js"></script>
@@ -4202,6 +4517,9 @@
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 
+  <!-- owl carousel -->
+  <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+
   <!-- highlight.js (code view) -->
   <script src="../assets/js/highlights/highlight.min.js"></script>
   <script>
@@ -4211,6 +4529,119 @@
   document.querySelectorAll("pre.code-view > code").forEach((codeBlock) => {
     codeBlock.textContent = codeBlock.innerHTML;
   });
+
+  // Leadership Carousel
+  $(function() {
+    $('.leadership-carousel').owlCarousel({
+      loop: true,
+      nav: true,
+      dots: false,
+      margin: 15,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      navText: [
+        '<i class="ti ti-arrow-left fs-7 round-48 hstack justify-content-center bg-primary-subtle rounded-circle"></i>',
+        '<i class="ti ti-arrow-right fs-7 round-48 hstack justify-content-center bg-primary-subtle rounded-circle"></i>'
+      ],
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        992: { items: 4 },
+        1024: { items: 4 }
+      }
+    });
+  });
+
+  // Hover Effect Switcher
+  const hoverEffects = ['hover-lift', 'hover-glow', 'hover-scale', 'hover-tilt'];
+
+  function setHoverEffect(effect) {
+    hoverEffects.forEach(e => document.body.classList.remove(e));
+    document.body.classList.add(effect);
+    localStorage.setItem('hoverEffect', effect);
+  }
+
+  hoverEffects.forEach(effect => {
+    document.getElementById(effect).addEventListener('change', function() {
+      if (this.checked) {
+        setHoverEffect(effect);
+      }
+    });
+  });
+
+  // Load saved hover effect
+  (function() {
+    const savedEffect = localStorage.getItem('hoverEffect');
+    if (savedEffect && hoverEffects.includes(savedEffect)) {
+      setHoverEffect(savedEffect);
+      document.getElementById(savedEffect).checked = true;
+    } else {
+      document.getElementById('hover-lift').checked = true;
+    }
+  })();
+
+  // Featured Content Switcher
+  const featuredContent = document.getElementById('featured-content');
+
+  document.getElementById('featured-show').addEventListener('change', function() {
+    if (this.checked) {
+      featuredContent.style.display = '';
+      localStorage.setItem('featuredContent', 'show');
+    }
+  });
+
+  document.getElementById('featured-hide').addEventListener('change', function() {
+    if (this.checked) {
+      featuredContent.style.display = 'none';
+      localStorage.setItem('featuredContent', 'hide');
+    }
+  });
+
+  // Load saved featured content setting
+  (function() {
+    const savedFeatured = localStorage.getItem('featuredContent');
+    if (savedFeatured === 'hide') {
+      featuredContent.style.display = 'none';
+      document.getElementById('featured-hide').checked = true;
+    } else {
+      document.getElementById('featured-show').checked = true;
+    }
+  })();
+
+  // Card Height Switcher
+  const cardHeightOptions = ['card-height-none', 'card-title-clamp', 'card-fixed-height'];
+
+  function setCardHeight(option) {
+    cardHeightOptions.forEach(o => {
+      if (o !== 'card-height-none') {
+        document.body.classList.remove(o);
+      }
+    });
+    if (option !== 'card-height-none') {
+      document.body.classList.add(option);
+    }
+    localStorage.setItem('cardHeight', option);
+  }
+
+  cardHeightOptions.forEach(option => {
+    document.getElementById(option).addEventListener('change', function() {
+      if (this.checked) {
+        setCardHeight(option);
+      }
+    });
+  });
+
+  // Load saved card height setting
+  (function() {
+    const savedCardHeight = localStorage.getItem('cardHeight');
+    if (savedCardHeight && cardHeightOptions.includes(savedCardHeight)) {
+      setCardHeight(savedCardHeight);
+      document.getElementById(savedCardHeight).checked = true;
+    } else {
+      document.getElementById('card-height-none').checked = true;
+    }
+  })();
 </script>
 </body>
 
