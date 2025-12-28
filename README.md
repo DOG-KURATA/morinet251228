@@ -21,3 +21,26 @@
 ### サイドメニュー
 
 - Blogサブメニューに「Posts4」リンクを追加
+
+## Git設定
+
+### リモートリポジトリ構成
+
+| リモート名 | 用途 |
+|-----------|------|
+| origin | GitLab（正・本番・CI/CD） |
+| github | GitHub（副・配布／共有） |
+
+### プッシュコマンド
+
+| コマンド | 動作 |
+|---------|------|
+| `git push` | GitLabのみ |
+| `git push github` | GitHubのみ |
+| `git pushall` | 両方同時 |
+
+### alias設定
+
+```bash
+git config alias.pushall '!git push origin && git push github'
+```
