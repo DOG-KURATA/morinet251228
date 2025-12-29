@@ -3796,39 +3796,8 @@
             </div>
 
             <!-- Recent Articles (within col-lg-9) -->
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-7">
-              <h2 class="fs-8 fw-bolder mb-0">Recent Articles</h2>
-              <style>
-                .view-toggle-btn {
-                  width: 32px;
-                  height: 32px;
-                  padding: 0;
-                  border: none;
-                  background: transparent;
-                  color: #adb5bd;
-                  transition: color 0.15s ease;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                }
-                .view-toggle-btn:hover {
-                  color: #6c757d;
-                }
-                .view-toggle-btn.active {
-                  color: #495057;
-                }
-              </style>
-              <div class="d-flex align-items-center gap-1">
-                <button type="button" class="view-toggle-btn active" id="grid-view-btn" title="Grid View">
-                  <i class="ti ti-layout-grid fs-5"></i>
-                </button>
-                <button type="button" class="view-toggle-btn" id="list-view-btn" title="List View">
-                  <i class="ti ti-list fs-5"></i>
-                </button>
-              </div>
-            </div>
-            <!-- Grid View -->
-            <div class="row" id="articles-grid-view">
+            <h2 class="fs-8 fw-bolder mb-4 mt-7">Recent Articles</h2>
+            <div class="row">
               <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card rounded-3 overflow-hidden">
                   <a href="javascript:void(0)" class="position-relative">
@@ -3993,143 +3962,6 @@
                         <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 2845</span>
                         <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 9</span>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- List View (hidden by default) -->
-            <div class="d-none" id="articles-list-view">
-              <style>
-                #articles-list-view .article-row {
-                  transition: all 0.15s ease-in-out;
-                  cursor: pointer;
-                  background-color: #fff;
-                  border: 1px solid rgba(0,0,0,0.08);
-                }
-                #articles-list-view .article-row:hover {
-                  background-color: rgba(var(--bs-primary-rgb), 0.06);
-                  border-color: rgba(var(--bs-primary-rgb), 0.2);
-                }
-              </style>
-              <div class="d-flex flex-column gap-2">
-                <!-- Article 1 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Designing for user experience: the essential ux principles</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 128</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 6941</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 3</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Article 2 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Mastering CSS Grid: a comprehensive guide for layouts</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 95</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5234</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 7</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Article 3 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Building responsive web apps with modern frameworks</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 76</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4128</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 5</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Article 4 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Introduction to TypeScript for JavaScript developers</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 112</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 3892</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 12</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Article 5 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Getting started with React hooks and state management</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 203</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 7521</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 18</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- Article 6 -->
-                <div class="article-row d-flex align-items-center p-3 rounded">
-                  <div style="width: 120px; flex-shrink: 0;">
-                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
-                  </div>
-                  <div class="flex-grow-1 px-3">
-                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Best practices for API design and documentation</a>
-                    <span class="fs-3 text-muted">Web Development</span>
-                  </div>
-                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
-                    <span class="fs-3 text-muted">2025.12.15</span>
-                  </div>
-                  <div style="width: 180px; flex-shrink: 0;">
-                    <div class="d-flex align-items-center gap-3">
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 87</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 2845</span>
-                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 9</span>
                     </div>
                   </div>
                 </div>
@@ -5161,38 +4993,6 @@
       document.getElementById(savedCardHeight).checked = true;
     } else {
       document.getElementById('card-height-none').checked = true;
-    }
-  })();
-
-  // Recent Articles View Toggle
-  (function() {
-    const gridViewBtn = document.getElementById('grid-view-btn');
-    const listViewBtn = document.getElementById('list-view-btn');
-    const gridView = document.getElementById('articles-grid-view');
-    const listView = document.getElementById('articles-list-view');
-
-    function setView(view) {
-      if (view === 'grid') {
-        gridView.classList.remove('d-none');
-        listView.classList.add('d-none');
-        gridViewBtn.classList.add('active');
-        listViewBtn.classList.remove('active');
-      } else {
-        gridView.classList.add('d-none');
-        listView.classList.remove('d-none');
-        gridViewBtn.classList.remove('active');
-        listViewBtn.classList.add('active');
-      }
-      localStorage.setItem('articlesView', view);
-    }
-
-    gridViewBtn.addEventListener('click', () => setView('grid'));
-    listViewBtn.addEventListener('click', () => setView('list'));
-
-    // Load saved view
-    const savedView = localStorage.getItem('articlesView');
-    if (savedView === 'list') {
-      setView('list');
     }
   })();
 </script>
