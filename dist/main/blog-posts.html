@@ -206,6 +206,13 @@
     body.tag-style-limit .tag-container .tag-wrapper .tag-more-count {
       display: inline-flex !important;
     }
+    /* Limit +N expanded state */
+    body.tag-style-limit .tag-container.limit-expanded .tag-wrapper .card-tag:nth-child(n+3) {
+      display: inline-flex !important;
+    }
+    body.tag-style-limit .tag-container.limit-expanded .tag-wrapper .tag-more-count {
+      display: none !important;
+    }
 
     /* Tag Style: Truncate (single line with ellipsis) */
     body.tag-style-truncate .tag-container .tag-wrapper {
@@ -5467,7 +5474,7 @@
     });
   }
 
-  // Tag expand button functionality
+  // Tag expand button functionality (for Expand style)
   document.querySelectorAll('.tag-expand-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -5483,6 +5490,15 @@
         icon.classList.add('ti-chevron-down');
         this.innerHTML = '<i class="ti ti-chevron-down me-1"></i>More';
       }
+    });
+  });
+
+  // Tag more count click functionality (for Limit +N style)
+  document.querySelectorAll('.tag-more-count').forEach(badge => {
+    badge.addEventListener('click', function(e) {
+      e.preventDefault();
+      const container = this.closest('.tag-container');
+      container.classList.toggle('limit-expanded');
     });
   });
 
