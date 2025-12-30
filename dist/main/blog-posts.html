@@ -187,6 +187,15 @@
       display: none !important;
     }
 
+    /* Tag Base Styles */
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      height: 24px;
+    }
+
     /* Tag Container Styles */
     .tag-container {
       display: flex;
@@ -243,12 +252,13 @@
       position: relative;
     }
     body.tag-style-expand .tag-container .tag-wrapper {
-      max-height: 28px;
+      max-height: 24px;
       overflow: hidden;
       transition: max-height 0.3s ease;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      align-content: flex-start;
     }
     body.tag-style-expand .tag-container.expanded .tag-wrapper {
       max-height: 200px;
@@ -257,23 +267,18 @@
       display: inline-flex !important;
       margin-top: 0.25rem;
     }
+    body.tag-style-expand .tag-container .tag-expand-btn.hide-btn {
+      display: none !important;
+    }
 
-    /* Tag Style: Icon (short codes) */
+    /* Tag Style: Icon (compact display) */
     body.tag-style-icon .tag-container .tag-wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
     body.tag-style-icon .tag-container .tag-wrapper .card-tag {
-      max-width: 50px;
-      overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
-      padding-left: 0.5rem !important;
-      padding-right: 0.5rem !important;
-    }
-    body.tag-style-icon .tag-container .tag-wrapper .card-tag span {
-      display: inline;
     }
 
     /* Hidden elements by default */
@@ -283,23 +288,33 @@
     }
     .tag-more-count {
       font-size: 0.75rem;
-      padding: 0.125rem 0.5rem;
+      padding: 0.25rem 0.5rem;
       border-radius: 50rem;
       background-color: white;
       color: var(--bs-dark);
       border: 1px solid var(--bs-dark);
       cursor: pointer;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      line-height: 1;
+      height: 24px;
     }
     .tag-expand-btn {
       font-size: 0.75rem;
-      padding: 0.125rem 0.5rem;
+      padding: 0.125rem 0.5rem 0.125rem 0.25rem;
       border-radius: 50rem;
       background-color: white;
       color: var(--bs-dark);
       cursor: pointer;
       border: 1px solid var(--bs-dark);
       align-items: center;
+      width: fit-content;
+      justify-content: center;
+      gap: 0;
+    }
+    .tag-expand-btn i {
+      margin-right: 0;
     }
     .tag-expand-btn:hover {
       background-color: var(--bs-dark);
@@ -3608,11 +3623,16 @@
             <div class="col-lg-6 ps-lg-0">
               <div class="p-7 p-lg-5 border flex-grow-1 rounded-end-3">
                 <div class="py-4 d-flex flex-column gap-3">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">Web
-                      Development
-                    </p>
-          </div>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Development</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>CSS</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Responsive</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Design</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                  </div>
                   <h2 class="fw-bolder fs-14 mb-0">
                     Building responsive websites: tips and tricks for modern developers
                   </h2>
@@ -3648,22 +3668,26 @@
               </a>
               <div class="mt-4 px-7 pb-7 h-100">
                 <div class="d-flex gap-3 flex-column h-100 justify-content-between">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <span class="tag-more-count"></span>
                     </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                  </div>
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     The future of web: what's next in 2024?
                   </a>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                      </div>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
           <div class="col-lg-3 col-md-6">
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
@@ -3671,22 +3695,27 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
-                </div>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                  </div>
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     Top 5 javascript frameworks to learn this year
                   </a>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
           <div class="col-lg-3 col-md-6">
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
@@ -3694,23 +3723,25 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
-                </div>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                  </div>
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     Understanding web accessibility: for beginners
                   </a>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                   </div>
                 </div>
               </div>
             </div>
-
+          </div>
           <div class="col-lg-3 col-md-6">
             <div class="card rounded-3 overflow-hidden">
               <a href="../main/frontend-blogdetailpage.html" class="position-relative">
@@ -3718,22 +3749,26 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
-                </div>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                  </div>
                   <a href="../main/frontend-blogdetailpage.html" class="fs-15 fw-bolder">
                     How optimize your website's performance with caching
                   </a>
-                    <div class="d-flex align-items-center gap-2 mt-2">
-                      <i class="ti ti-circle fs-2"></i>
-                      <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
-                    </div>
+                  <div class="d-flex align-items-center gap-2 mt-2">
+                    <i class="ti ti-circle fs-2"></i>
+                    <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.15</p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
         <!-- Leadership Section -->
@@ -3751,10 +3786,14 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     The future of web: what's next in 2024?
@@ -3774,10 +3813,15 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     Top 5 javascript frameworks to learn this year
@@ -3797,10 +3841,13 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     Understanding web accessibility: for beginners
@@ -3820,10 +3867,14 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     How optimize your website's performance with caching
@@ -3843,10 +3894,14 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     The future of web: what's next in 2024?
@@ -3866,10 +3921,15 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     Top 5 javascript frameworks to learn this year
@@ -3889,10 +3949,13 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     Understanding web accessibility: for beginners
@@ -3912,10 +3975,14 @@
               </a>
               <div class="mt-4 px-7 pb-7">
                 <div class="d-flex gap-3 flex-column">
-                  <div class="d-flex">
-                    <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag">
-                      Web Development
-                    </p>
+                  <div class="tag-container">
+                    <div class="tag-wrapper">
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
+                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <span class="tag-more-count"></span>
+                    </div>
+                    <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                   </div>
                   <a href="javascript:void(0)" class="fs-15 fw-bolder">
                     How optimize your website's performance with caching
@@ -3982,7 +4049,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Designing for user experience: the essential ux principles
@@ -4014,7 +4081,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Lay"><span>Layout</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Mastering CSS Grid: a comprehensive guide for layouts
@@ -4048,7 +4115,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nux"><span>Nuxt</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Building responsive web apps with modern frameworks
@@ -4079,7 +4146,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JS"><span>JavaScript</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Introduction to TypeScript for JavaScript developers
@@ -4111,7 +4178,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="St"><span>State Management</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Getting started with React hooks and state management
@@ -4144,7 +4211,7 @@
                           <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></p>
                           <span class="tag-more-count"></span>
                         </div>
-                        <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
                         Best practices for API design and documentation
@@ -4564,7 +4631,15 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Event</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4580,7 +4655,14 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Conference</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4596,7 +4678,16 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Workshop</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hands-on</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Beginner</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4612,7 +4703,15 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Meetup</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Network</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Tech</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4628,7 +4727,14 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Seminar</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Online</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4644,7 +4750,15 @@
                           記事タイトルが入る場所。最大3行まで入る想定です。
                         </a>
                         <div class="mt-auto pt-3">
-                          <span class="btn btn-outline-dark btn-sm rounded-pill px-3">タグタグ</span>
+                          <div class="tag-container">
+                            <div class="tag-wrapper">
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hackathon</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>AI</span></p>
+                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Machine Learning</span></p>
+                              <span class="tag-more-count"></span>
+                            </div>
+                            <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -5517,12 +5631,35 @@
     document.querySelectorAll('.tag-container').forEach(container => {
       const tags = container.querySelectorAll('.tag-wrapper .card-tag');
       const moreCount = container.querySelector('.tag-more-count');
+      const expandBtn = container.querySelector('.tag-expand-btn');
+
+      // Update +N badge for Limit style
       if (moreCount) {
         if (tags.length > 2) {
           moreCount.textContent = '+' + (tags.length - 2);
           moreCount.classList.remove('hide-badge');
         } else {
           moreCount.classList.add('hide-badge');
+        }
+      }
+
+      // Check if tags overflow to second line (for Expand style)
+      if (expandBtn) {
+        const wrapper = container.querySelector('.tag-wrapper');
+        if (wrapper && tags.length > 0) {
+          // Temporarily remove max-height to measure actual height
+          const originalMaxHeight = wrapper.style.maxHeight;
+          wrapper.style.maxHeight = 'none';
+          const wrapperHeight = wrapper.scrollHeight;
+          const firstTagHeight = tags[0].offsetHeight;
+          wrapper.style.maxHeight = originalMaxHeight;
+
+          // If content fits in one line (roughly), hide the button
+          if (wrapperHeight <= firstTagHeight + 8) {
+            expandBtn.classList.add('hide-btn');
+          } else {
+            expandBtn.classList.remove('hide-btn');
+          }
         }
       }
     });
@@ -5538,11 +5675,11 @@
       if (container.classList.contains('expanded')) {
         icon.classList.remove('ti-chevron-down');
         icon.classList.add('ti-chevron-up');
-        this.innerHTML = '<i class="ti ti-chevron-up me-1"></i>Less';
+        this.innerHTML = '<i class="ti ti-chevron-up"></i>Less';
       } else {
         icon.classList.remove('ti-chevron-up');
         icon.classList.add('ti-chevron-down');
-        this.innerHTML = '<i class="ti ti-chevron-down me-1"></i>More';
+        this.innerHTML = '<i class="ti ti-chevron-down"></i>More';
       }
     });
   });
