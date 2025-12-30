@@ -203,8 +203,11 @@
     body.tag-style-limit .tag-container .tag-wrapper .card-tag:nth-child(n+3) {
       display: none !important;
     }
-    body.tag-style-limit .tag-container .tag-wrapper .tag-more-count {
+    body.tag-style-limit .tag-container .tag-wrapper .tag-more-count:not(.hide-badge) {
       display: inline-flex !important;
+    }
+    body.tag-style-limit .tag-container .tag-wrapper .tag-more-count.hide-badge {
+      display: none !important;
     }
     /* Limit +N expanded state */
     body.tag-style-limit .tag-container.limit-expanded .tag-wrapper .card-tag:nth-child(n+3) {
@@ -5471,9 +5474,9 @@
       if (moreCount) {
         if (tags.length > 2) {
           moreCount.textContent = '+' + (tags.length - 2);
-          moreCount.style.display = '';
+          moreCount.classList.remove('hide-badge');
         } else {
-          moreCount.style.display = 'none';
+          moreCount.classList.add('hide-badge');
         }
       }
     });
