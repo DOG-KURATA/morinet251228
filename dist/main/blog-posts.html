@@ -190,29 +190,36 @@
     /* Tag Container Styles */
     .tag-container {
       display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .tag-wrapper {
+      display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      position: relative;
     }
 
     /* Tag Style: Limit +N */
-    body.tag-style-limit .tag-container .card-tag:nth-child(n+3) {
+    body.tag-style-limit .tag-container .tag-wrapper .card-tag:nth-child(n+3) {
       display: none !important;
     }
-    body.tag-style-limit .tag-container .tag-more-count {
+    body.tag-style-limit .tag-container .tag-wrapper .tag-more-count {
       display: inline-flex !important;
     }
 
     /* Tag Style: Truncate (single line with ellipsis) */
-    body.tag-style-truncate .tag-container {
+    body.tag-style-truncate .tag-container .tag-wrapper {
       flex-wrap: nowrap;
       overflow: hidden;
       max-width: 100%;
+      display: flex;
+      gap: 0.5rem;
+      position: relative;
     }
-    body.tag-style-truncate .tag-container .card-tag {
+    body.tag-style-truncate .tag-container .tag-wrapper .card-tag {
       flex-shrink: 0;
     }
-    body.tag-style-truncate .tag-container::after {
+    body.tag-style-truncate .tag-container .tag-wrapper::after {
       content: '...';
       position: absolute;
       right: 0;
@@ -223,19 +230,31 @@
 
     /* Tag Style: Expand (fixed height with show more) */
     body.tag-style-expand .tag-container {
+      position: relative;
+    }
+    body.tag-style-expand .tag-container .tag-wrapper {
       max-height: 28px;
       overflow: hidden;
       transition: max-height 0.3s ease;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    body.tag-style-expand .tag-container.expanded {
+    body.tag-style-expand .tag-container.expanded .tag-wrapper {
       max-height: 200px;
     }
     body.tag-style-expand .tag-container .tag-expand-btn {
       display: inline-flex !important;
+      margin-top: 0.25rem;
     }
 
     /* Tag Style: Icon (short codes) */
-    body.tag-style-icon .tag-container .card-tag {
+    body.tag-style-icon .tag-container .tag-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    body.tag-style-icon .tag-container .tag-wrapper .card-tag {
       max-width: 50px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -243,7 +262,7 @@
       padding-left: 0.5rem !important;
       padding-right: 0.5rem !important;
     }
-    body.tag-style-icon .tag-container .card-tag span {
+    body.tag-style-icon .tag-container .tag-wrapper .card-tag span {
       display: inline;
     }
 
@@ -3945,11 +3964,13 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UX"><span>UX Design</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UI"><span>UI</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UX"><span>UX Design</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UI"><span>UI</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
@@ -3976,10 +3997,12 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Lay"><span>Layout</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Lay"><span>Layout</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
@@ -4006,12 +4029,14 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Vue"><span>Vue.js</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Ang"><span>Angular</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nxt"><span>Next.js</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nux"><span>Nuxt</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Vue"><span>Vue.js</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Ang"><span>Angular</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nxt"><span>Next.js</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nux"><span>Nuxt</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
@@ -4038,9 +4063,11 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TS"><span>TypeScript</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JS"><span>JavaScript</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TS"><span>TypeScript</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JS"><span>JavaScript</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
@@ -4067,10 +4094,12 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Hk"><span>Hooks</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="St"><span>State Management</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Hk"><span>Hooks</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="St"><span>State Management</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
@@ -4097,11 +4126,13 @@
                   <div class="mt-4 px-7 pb-7">
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="API"><span>API</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="REST"><span>REST</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Doc"><span>Documentation</span></p>
-                        <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></p>
-                        <span class="tag-more-count"></span>
+                        <div class="tag-wrapper">
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="API"><span>API</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="REST"><span>REST</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Doc"><span>Documentation</span></p>
+                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></p>
+                          <span class="tag-more-count"></span>
+                        </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down me-1"></i>More</button>
                       </div>
                       <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
