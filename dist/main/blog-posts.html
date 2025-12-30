@@ -5466,10 +5466,15 @@
 
   function updateTagMoreCounts() {
     document.querySelectorAll('.tag-container').forEach(container => {
-      const tags = container.querySelectorAll('.card-tag');
+      const tags = container.querySelectorAll('.tag-wrapper .card-tag');
       const moreCount = container.querySelector('.tag-more-count');
-      if (moreCount && tags.length > 2) {
-        moreCount.textContent = '+' + (tags.length - 2);
+      if (moreCount) {
+        if (tags.length > 2) {
+          moreCount.textContent = '+' + (tags.length - 2);
+          moreCount.style.display = '';
+        } else {
+          moreCount.style.display = 'none';
+        }
       }
     });
   }
