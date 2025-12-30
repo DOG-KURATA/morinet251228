@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css" />
 
-  <title>Modernize Bootstrap Admin</title>
+  <title>Customizable Dashboard - Modernize Bootstrap Admin</title>
+  <link rel="stylesheet" href="../assets/libs/dragula/dist/dragula.min.css">
   <style>
     /* Hover Effect: Lift */
     body.hover-lift .card,
@@ -181,6 +182,66 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    /* ドラッグ＆ドロップ用スタイル */
+    .draggable-section {
+      cursor: move;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .draggable-section .section-handle {
+      cursor: grab;
+      padding: 8px 12px;
+      margin: -8px -12px 8px -12px;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .draggable-section .section-handle:active {
+      cursor: grabbing;
+    }
+    .draggable-section .section-handle .drag-icon {
+      color: #adb5bd;
+      font-size: 1.1rem;
+    }
+    .gu-mirror {
+      position: fixed !important;
+      margin: 0 !important;
+      z-index: 9999 !important;
+      opacity: 0.9;
+      transform: rotate(2deg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .gu-hide {
+      display: none !important;
+    }
+    .gu-unselectable {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+    .gu-transit {
+      opacity: 0.3;
+    }
+    .drop-placeholder {
+      background: rgba(93, 135, 255, 0.1);
+      border: 2px dashed rgba(93, 135, 255, 0.5);
+      border-radius: 8px;
+      min-height: 100px;
+    }
+    /* リセットボタン */
+    .reset-layout-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px 16px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
   </style>
 </head>
 
@@ -197,8 +258,7 @@
         <!-- ---------------------------------- -->
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="../main/index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
-            <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
+            <img src="../assets/images/logos/morinet_logo.svg" alt="MORINET Logo" />
           </a>
           <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
             <i class="ti ti-x"></i>
@@ -3475,6 +3535,21 @@
     <!-- ------------------------------------- -->
     <section class="pb-4 pb-md-5 pb-lg-14">
       <div class="container-fluid">
+        <!-- レイアウトリセットボタン -->
+        <button id="reset-layout-btn" class="btn btn-outline-secondary reset-layout-btn d-flex align-items-center gap-2">
+          <i class="ti ti-refresh fs-5"></i>
+          <span>レイアウトリセット</span>
+        </button>
+
+        <!-- メインドロップゾーン開始 -->
+        <div id="main-drop-zone">
+
+        <!-- Featured Content Section -->
+        <div class="draggable-section" data-section-id="featured-content">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Featured Content</span>
+          </div>
         <div class="card data-shadow rounded-3 mb-7" id="featured-content">
           <div class="row">
             <div class="col-lg-6 pe-lg-0">
@@ -3515,6 +3590,14 @@
             </div>
           </div>
         </div>
+        </div><!-- /draggable-section: featured-content -->
+
+        <!-- Featured Cards Section -->
+        <div class="draggable-section" data-section-id="featured-cards">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Featured Cards</span>
+          </div>
         <div class="row">
 
           <div class="col-lg-3 col-md-6">
@@ -3611,10 +3694,17 @@
               </div>
             </div>
         </div>
+        </div><!-- /draggable-section: featured-cards -->
 
+        <!-- Local Topics Section -->
+        <div class="draggable-section" data-section-id="local-topics">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Local Topics</span>
+          </div>
         <!-- Leadership Section -->
         <div class="row mt-7" id="local-topics-section">
-          <div class="col-lg-9" id="local-topics-carousel-col">
+          <div class="col-12" id="local-topics-carousel-col">
             <div class="d-flex align-items-center gap-4 mb-5" id="local-topics-header">
               <h2 class="fs-8 fw-bolder mb-0">Local Topics</h2>
               <p class="fs-4 mb-0 text-muted">Our robust analytics offer rich insights</p>
@@ -3803,11 +3893,21 @@
                 </div>
               </div>
             </div>
-            </div>
-            </div>
+          </div>
+            </div><!-- /owl-carousel -->
+          </div><!-- /col-12 -->
+        </div><!-- /row -->
+        </div><!-- /draggable-section: local-topics -->
 
-            <!-- Recent Articles (within col-lg-9) -->
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-7">
+        <!-- Recent Articles Section -->
+        <div class="draggable-section" data-section-id="recent-articles">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Recent Articles</span>
+          </div>
+        <div class="mt-7">
+            <!-- Recent Articles -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
               <div class="d-flex align-items-center gap-3">
                 <h2 class="fs-8 fw-bolder mb-0">Recent Articles</h2>
                 <span class="text-muted fs-3">最新の記事</span>
@@ -4149,8 +4249,24 @@
                 </div>
               </div>
             </div>
+        </div>
+        </div><!-- /draggable-section: recent-articles -->
+
+        <!-- Sidebar Section -->
+        <div class="draggable-section" data-section-id="sidebar">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Sidebar</span>
           </div>
-          <div class="col-lg-3" id="sidebar-col">
+          <div class="row">
+          <div class="col-lg-3 ms-auto" id="sidebar-col">
+            <div id="sidebar-drop-zone">
+            <!-- Banner Section -->
+            <div class="draggable-section mb-3" data-section-id="sidebar-banners">
+              <div class="section-handle">
+                <i class="ti ti-grip-vertical drag-icon"></i>
+                <span class="fw-semibold">Banners</span>
+              </div>
             <!-- Banner 1 -->
             <div class="card mb-3">
               <div class="card-body p-3">
@@ -4177,6 +4293,14 @@
                 </div>
               </div>
             </div>
+            </div><!-- /draggable-section: sidebar-banners -->
+
+            <!-- Recent Comments Section -->
+            <div class="draggable-section mb-3" data-section-id="sidebar-comments">
+              <div class="section-handle">
+                <i class="ti ti-grip-vertical drag-icon"></i>
+                <span class="fw-semibold">Recent Comments</span>
+              </div>
             <!-- Recent Comments -->
             <div class="card">
               <div class="card-body">
@@ -4257,6 +4381,14 @@
                 </div>
               </div>
             </div>
+            </div><!-- /draggable-section: sidebar-comments -->
+
+            <!-- いいねランキング Section -->
+            <div class="draggable-section mb-3" data-section-id="sidebar-likes-ranking">
+              <div class="section-handle">
+                <i class="ti ti-grip-vertical drag-icon"></i>
+                <span class="fw-semibold">いいねランキング</span>
+              </div>
             <!-- 今月のいいねランキング -->
             <div class="card mt-3">
               <div class="card-body p-3">
@@ -4338,11 +4470,24 @@
                 </div>
               </div>
             </div>
+            </div><!-- /draggable-section: sidebar-likes-ranking -->
+
+            </div><!-- /sidebar-drop-zone -->
           </div>
-        </div>
-        <!-- Leadership Section End -->
+          </div>
+        </div><!-- /draggable-section: sidebar -->
+
+        </div><!-- /main-drop-zone -->
+
+        <!-- メインドロップゾーン再開（フルワイドセクション） -->
+        <div id="main-drop-zone-2">
 
         <!-- Event Pick Up Section -->
+        <div class="draggable-section" data-section-id="event-pickup">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Event Pick Up</span>
+          </div>
         <div class="row mt-7" id="event-pickup-section">
           <div class="col-12">
             <div class="card bg-light-subtle">
@@ -4458,8 +4603,15 @@
             </div>
           </div>
         </div>
+        </div><!-- /draggable-section: event-pickup -->
         <!-- Event Pick Up Section End -->
 
+        <!-- Media Highlight Section -->
+        <div class="draggable-section" data-section-id="media-highlight">
+          <div class="section-handle">
+            <i class="ti ti-grip-vertical drag-icon"></i>
+            <span class="fw-semibold">Media Highlight</span>
+          </div>
         <!-- Media Highlight Section Start -->
         <div class="row mt-7" id="media-highlight-section">
           <div class="col-12">
@@ -4575,7 +4727,10 @@
             </div>
           </div>
         </div>
+        </div><!-- /draggable-section: media-highlight -->
         <!-- Media Highlight Section End -->
+
+        </div><!-- /main-drop-zone-2 -->
 
         <!-- Footer Section Start -->
         <footer class="mt-7 pt-5 border-top">
@@ -5214,6 +5369,165 @@
       setView('list');
     }
   })();
+</script>
+
+<!-- Dragula Library -->
+<script src="../assets/libs/dragula/dist/dragula.min.js"></script>
+
+<!-- Custom Drag & Drop Initialization -->
+<script>
+(function() {
+  'use strict';
+
+  // ドラッグ可能なエリアを初期化
+  const mainContentArea = document.getElementById('main-drop-zone');
+  const mainContentArea2 = document.getElementById('main-drop-zone-2');
+  const sidebarArea = document.getElementById('sidebar-drop-zone');
+
+  if (!mainContentArea || !sidebarArea) {
+    console.warn('Drop zones not found');
+    return;
+  }
+
+  // ドラッグハンドルのチェック関数
+  function isDragHandle(handle) {
+    if (!handle) return false;
+    if (handle.classList.contains('section-handle')) return true;
+    if (handle.classList.contains('drag-icon')) return true;
+    const parent = handle.closest('.section-handle');
+    return parent !== null;
+  }
+
+  // メインエリアのDragula（上部セクション）
+  const mainDrake = dragula([mainContentArea], {
+    moves: function(el, source, handle) {
+      return el.classList.contains('draggable-section') && isDragHandle(handle);
+    },
+    direction: 'vertical',
+    mirrorContainer: mainContentArea
+  });
+
+  // メインエリアのDragula（下部フルワイドセクション）
+  let mainDrake2 = null;
+  if (mainContentArea2) {
+    mainDrake2 = dragula([mainContentArea2], {
+      moves: function(el, source, handle) {
+        return el.classList.contains('draggable-section') && isDragHandle(handle);
+      },
+      direction: 'vertical',
+      mirrorContainer: mainContentArea2
+    });
+    mainDrake2.on('drop', saveLayout);
+  }
+
+  // サイドバーエリアのDragula
+  const sidebarDrake = dragula([sidebarArea], {
+    moves: function(el, source, handle) {
+      return el.classList.contains('draggable-section') && isDragHandle(handle);
+    },
+    direction: 'vertical',
+    mirrorContainer: sidebarArea
+  });
+
+  console.log('Dragula initialized:', {
+    mainDropZone: mainContentArea,
+    mainDropZone2: mainContentArea2,
+    sidebarDropZone: sidebarArea,
+    mainChildren: mainContentArea.children.length,
+    main2Children: mainContentArea2 ? mainContentArea2.children.length : 0,
+    sidebarChildren: sidebarArea.children.length
+  });
+
+  // デバッグ: ドラッグイベント
+  mainDrake.on('drag', function(el) {
+    console.log('Dragging:', el.dataset.sectionId);
+  });
+  mainDrake.on('drop', function(el) {
+    console.log('Dropped:', el.dataset.sectionId);
+    saveLayout();
+  });
+  mainDrake.on('cancel', function(el) {
+    console.log('Cancelled:', el.dataset.sectionId);
+  });
+
+  // セクションハンドルにクリックイベントを追加してテスト
+  document.querySelectorAll('.section-handle').forEach(function(handle) {
+    handle.addEventListener('mousedown', function(e) {
+      console.log('Handle mousedown:', handle.parentElement.dataset.sectionId);
+    });
+  });
+
+  // LocalStorageに配置を保存
+  function saveLayout() {
+    const mainOrder = Array.from(mainContentArea.children)
+      .filter(el => el.dataset.sectionId)
+      .map(el => el.dataset.sectionId);
+    const main2Order = mainContentArea2 ? Array.from(mainContentArea2.children)
+      .filter(el => el.dataset.sectionId)
+      .map(el => el.dataset.sectionId) : [];
+    const sidebarOrder = Array.from(sidebarArea.children)
+      .filter(el => el.dataset.sectionId)
+      .map(el => el.dataset.sectionId);
+
+    localStorage.setItem('dashboardLayout', JSON.stringify({
+      main: mainOrder,
+      main2: main2Order,
+      sidebar: sidebarOrder
+    }));
+  }
+
+  // LocalStorageから配置を復元
+  function loadLayout() {
+    const saved = localStorage.getItem('dashboardLayout');
+    if (!saved) return;
+
+    try {
+      const layout = JSON.parse(saved);
+
+      // メインエリアの順序を復元
+      if (layout.main && layout.main.length) {
+        layout.main.forEach(id => {
+          const el = mainContentArea.querySelector(`[data-section-id="${id}"]`);
+          if (el) mainContentArea.appendChild(el);
+        });
+      }
+
+      // メインエリア2の順序を復元
+      if (mainContentArea2 && layout.main2 && layout.main2.length) {
+        layout.main2.forEach(id => {
+          const el = mainContentArea2.querySelector(`[data-section-id="${id}"]`);
+          if (el) mainContentArea2.appendChild(el);
+        });
+      }
+
+      // サイドバーの順序を復元
+      if (layout.sidebar && layout.sidebar.length) {
+        layout.sidebar.forEach(id => {
+          const el = sidebarArea.querySelector(`[data-section-id="${id}"]`);
+          if (el) sidebarArea.appendChild(el);
+        });
+      }
+    } catch (e) {
+      console.warn('Failed to load layout:', e);
+    }
+  }
+
+  // ドロップ時に保存
+  mainDrake.on('drop', saveLayout);
+  sidebarDrake.on('drop', saveLayout);
+
+  // 初期読み込み時に復元
+  loadLayout();
+
+  // リセットボタン
+  const resetBtn = document.getElementById('reset-layout-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      localStorage.removeItem('dashboardLayout');
+      location.reload();
+    });
+  }
+})();
 </script>
 </body>
 
