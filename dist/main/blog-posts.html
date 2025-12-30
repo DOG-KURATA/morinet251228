@@ -27,10 +27,13 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
     /* Local Topics セクション - ホバー効果はカード内で完結 */
+    #local-topics-section {
+      margin-bottom: 3rem;
+    }
     #local-topics-carousel-col {
       overflow: hidden;
-      padding-top: 15px;
-      margin-top: -15px;
+      padding: 20px 15px 20px 15px;
+      margin: -20px -15px -20px -15px;
     }
     .leadership-carousel .owl-stage {
       display: flex;
@@ -82,7 +85,7 @@
       overflow: hidden;
     }
 
-    /* Card Height: Fixed Card (Featured Content以外) */
+    /* Card Height: Fixed Card (全てのカード) */
     body.card-fixed-height .container-fluid > .row > [class*="col-"] {
       margin-bottom: 1.5rem;
     }
@@ -94,28 +97,67 @@
     body.card-fixed-height .container-fluid > .row > [class*="col-"] > .card > div:last-child {
       flex-grow: 1;
     }
-    /* Featured Contentの余白をリセット */
-    body.card-fixed-height #featured-content {
-      height: auto;
+    /* Featured Content にも高さ固定を適用 */
+    body.card-fixed-height #featured-content > .row > [class*="col-"] {
       margin-bottom: 0;
     }
-    body.card-fixed-height #featured-content .row > [class*="col-"] {
-      margin-bottom: 0;
+    body.card-fixed-height #featured-content + .row > [class*="col-"] {
+      margin-bottom: 1.5rem;
+    }
+    body.card-fixed-height #featured-content + .row > [class*="col-"] > .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body.card-fixed-height #featured-content + .row > [class*="col-"] > .card > div:last-child {
+      flex-grow: 1;
     }
     /* サイドバーのカードは高さ固定を解除 */
     body.card-fixed-height #sidebar-col > .card {
       height: auto;
     }
-    /* Recent Articlesのカードにも高さ固定を適用 */
-    body.card-fixed-height #local-topics-carousel-col > .row > [class*="col-"] {
-      margin-bottom: 1.5rem;
-    }
-    body.card-fixed-height #local-topics-carousel-col > .row > [class*="col-"] > .card {
+    /* Local Topics カルーセルのカードにも高さ固定を適用 */
+    body.card-fixed-height #local-topics-carousel-col .owl-carousel .item .card {
       height: 100%;
       display: flex;
       flex-direction: column;
     }
-    body.card-fixed-height #local-topics-carousel-col > .row > [class*="col-"] > .card > div:last-child {
+    body.card-fixed-height #local-topics-carousel-col .owl-carousel .item .card > div:last-child {
+      flex-grow: 1;
+    }
+    body.card-fixed-height #local-topics-carousel-col .owl-carousel .owl-stage {
+      display: flex;
+      align-items: stretch;
+    }
+    body.card-fixed-height #local-topics-carousel-col .owl-carousel .owl-item {
+      display: flex;
+    }
+    body.card-fixed-height #local-topics-carousel-col .owl-carousel .item {
+      height: 100%;
+      display: flex;
+    }
+    /* Event Pick Up のカードにも高さ固定を適用 */
+    body.card-fixed-height #event-pickup .row > [class*="col-"] {
+      margin-bottom: 1.5rem;
+    }
+    body.card-fixed-height #event-pickup .row > [class*="col-"] > .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body.card-fixed-height #event-pickup .row > [class*="col-"] > .card > div:last-child {
+      flex-grow: 1;
+    }
+    /* Recent Articles Grid View のカードにも高さ固定を適用 */
+    body.card-fixed-height #articles-grid-view > [class*="col-"] {
+      margin-bottom: 1.5rem;
+    }
+    body.card-fixed-height #articles-grid-view > [class*="col-"] > .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body.card-fixed-height #articles-grid-view > [class*="col-"] > .card > div:last-child {
       flex-grow: 1;
     }
 
@@ -189,11 +231,28 @@
 
     /* Tag Base Styles */
     .card-tag {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      height: 24px !important;
+      box-sizing: border-box !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      margin: 0 !important;
+      vertical-align: middle !important;
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .card-tag:hover {
+      background-color: var(--bs-dark) !important;
+      color: white !important;
+    }
+    .card-tag span {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      line-height: 1;
-      height: 24px;
+      height: 100%;
     }
 
     /* Tag Container Styles */
@@ -288,17 +347,19 @@
     }
     .tag-more-count {
       font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
+      padding: 0 0.5rem !important;
       border-radius: 50rem;
       background-color: white;
       color: var(--bs-dark);
       border: 1px solid var(--bs-dark);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      height: 24px;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      height: 24px !important;
+      box-sizing: border-box !important;
+      vertical-align: middle !important;
     }
     .tag-expand-btn {
       font-size: 0.75rem;
@@ -335,7 +396,7 @@
         <!-- Start Vertical Layout Sidebar -->
         <!-- ---------------------------------- -->
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="../main/index.html" class="text-nowrap logo-img">
+          <a href="blog-posts.html" class="text-nowrap logo-img">
             <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo" />
             <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo" />
           </a>
@@ -2030,7 +2091,7 @@
             </ul>
 
             <div class="d-block d-lg-none py-4">
-              <a href="../main/index.html" class="text-nowrap logo-img">
+              <a href="blog-posts.html" class="text-nowrap logo-img">
                 <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
                 <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
               </a>
@@ -2443,7 +2504,7 @@
                 </a>
               </li>
               <li class="nav-item d-none d-xl-block">
-                <a href="../main/index.html" class="text-nowrap nav-link">
+                <a href="blog-posts.html" class="text-nowrap nav-link">
                   <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" width="180" alt="modernize-img" />
                   <img src="../assets/images/logos/light-logo.svg" class="light-logo" width="180" alt="modernize-img" />
                 </a>
@@ -2596,7 +2657,7 @@
               </li>
             </ul>
             <div class="d-block d-xl-none">
-              <a href="../main/index.html" class="text-nowrap nav-link">
+              <a href="blog-posts.html" class="text-nowrap nav-link">
                 <img src="../assets/images/logos/dark-logo.svg" width="180" alt="modernize-img" />
               </a>
             </div>
@@ -3625,10 +3686,10 @@
                 <div class="py-4 d-flex flex-column gap-3">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Development</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>CSS</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Responsive</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Design</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Development</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>CSS</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Responsive</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Design</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3659,7 +3720,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="featured-cards-row">
 
           <div class="col-lg-3 col-md-6">
             <div class="card rounded-3 overflow-hidden">
@@ -3670,9 +3731,9 @@
                 <div class="d-flex gap-3 flex-column h-100 justify-content-between">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3697,10 +3758,10 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3725,8 +3786,8 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3751,9 +3812,9 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3774,11 +3835,12 @@
         <!-- Leadership Section -->
         <div class="row mt-7" id="local-topics-section">
           <div class="col-lg-9" id="local-topics-carousel-col">
-            <div class="d-flex align-items-center gap-4 mb-5" id="local-topics-header">
-              <h2 class="fs-8 fw-bolder mb-0">Local Topics</h2>
-              <p class="fs-4 mb-0 text-muted">Our robust analytics offer rich insights</p>
-            </div>
-            <div class="owl-carousel leadership-carousel owl-theme">
+            <div id="local-topics-carousel-wrapper">
+              <div class="d-flex align-items-center gap-4 mb-5" id="local-topics-header">
+                <h2 class="fs-8 fw-bolder mb-0">Local Topics</h2>
+                <p class="fs-4 mb-0 text-muted">Our robust analytics offer rich insights</p>
+              </div>
+              <div class="owl-carousel leadership-carousel owl-theme">
           <div class="item">
             <div class="card rounded-3 overflow-hidden">
               <a href="javascript:void(0)" class="position-relative">
@@ -3788,9 +3850,9 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3815,10 +3877,10 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3843,8 +3905,8 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3869,9 +3931,9 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3896,9 +3958,9 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3923,10 +3985,10 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>TypeScript</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Framework</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Web Dev</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3951,8 +4013,8 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>A11y</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>UX</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3977,9 +4039,9 @@
                 <div class="d-flex gap-3 flex-column">
                   <div class="tag-container">
                     <div class="tag-wrapper">
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></p>
-                      <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></p>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Performance</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Cache</span></a>
+                      <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Backend</span></a>
                       <span class="tag-more-count"></span>
                     </div>
                     <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -3996,11 +4058,12 @@
             </div>
             </div>
             </div>
+            </div><!-- /local-topics-carousel-wrapper -->
 
             <!-- Recent Articles (within col-lg-9) -->
-            <div class="d-flex justify-content-between align-items-center mb-4 mt-7">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-7" id="recent-articles-header">
               <div class="d-flex align-items-center gap-3">
-                <h2 class="fs-8 fw-bolder mb-0">Recent Articles</h2>
+                <h2 class="fs-8 fw-bolder mb-0" id="recent-articles-title">Recent Articles</h2>
                 <span class="text-muted fs-3">最新の記事</span>
               </div>
               <style>
@@ -4043,10 +4106,10 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UX"><span>UX Design</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UI"><span>UI</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UX"><span>UX Design</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UI"><span>UI</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4076,9 +4139,9 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Lay"><span>Layout</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WD"><span>Web Development</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Lay"><span>Layout</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4108,11 +4171,11 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Vue"><span>Vue.js</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Ang"><span>Angular</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nxt"><span>Next.js</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nux"><span>Nuxt</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Vue"><span>Vue.js</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Ang"><span>Angular</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nxt"><span>Next.js</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Nux"><span>Nuxt</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4142,8 +4205,8 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TS"><span>TypeScript</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JS"><span>JavaScript</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TS"><span>TypeScript</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JS"><span>JavaScript</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4173,9 +4236,9 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Hk"><span>Hooks</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="St"><span>State Management</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Hk"><span>Hooks</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="St"><span>State Management</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4205,10 +4268,10 @@
                     <div class="d-flex gap-3 flex-column">
                       <div class="tag-container">
                         <div class="tag-wrapper">
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="API"><span>API</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="REST"><span>REST</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Doc"><span>Documentation</span></p>
-                          <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></p>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="API"><span>API</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="REST"><span>REST</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Doc"><span>Documentation</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></a>
                           <span class="tag-more-count"></span>
                         </div>
                         <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4229,7 +4292,854 @@
                   </div>
                 </div>
               </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Node"><span>Node.js</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Exp"><span>Express</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Building scalable backend services with Node.js and Express
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.14</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 156</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4532</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="DB"><span>Database</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="SQL"><span>SQL</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Perf"><span>Performance</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Optimizing database queries for better performance
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.14</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 89</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 3241</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Git"><span>Git</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Ver"><span>Version Control</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CI"><span>CI/CD</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Advanced Git workflows and branching strategies
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.13</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 134</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5123</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Test"><span>Testing</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Jest"><span>Jest</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TDD"><span>TDD</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Unit testing best practices with Jest and React Testing Library
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.13</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 167</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4892</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 14</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="AWS"><span>AWS</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Cloud"><span>Cloud</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Srv"><span>Serverless</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Getting started with AWS Lambda and serverless architecture
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.12</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 198</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 6234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 21</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Docker"><span>Docker</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="K8s"><span>Kubernetes</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="DevOps"><span>DevOps</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Container orchestration with Docker and Kubernetes
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.12</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 221</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 7891</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 19</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="GraphQL"><span>GraphQL</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="API"><span>API</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Apollo"><span>Apollo</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Introduction to GraphQL: building modern APIs
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.11</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 145</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5432</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 16</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Sec"><span>Security</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Auth"><span>Authentication</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="JWT"><span>JWT</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Web security fundamentals: protecting your applications
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.11</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 178</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 6123</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 13</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Perf"><span>Performance</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Opt"><span>Optimization</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Web"><span>Web Vitals</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Core Web Vitals: improving your site's performance metrics
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.10</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 132</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4567</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="PWA"><span>PWA</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Mobile"><span>Mobile</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="SW"><span>Service Worker</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Building progressive web apps for offline-first experiences
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.10</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 156</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Sass"><span>Sass</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Style"><span>Styling</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Advanced Sass techniques for scalable stylesheets
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.09</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 98</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 3456</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 7</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Webpack"><span>Webpack</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Vite"><span>Vite</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Build"><span>Build Tools</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Modern build tools: Webpack vs Vite comparison
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.09</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 187</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 6789</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 23</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="A11y"><span>Accessibility</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WCAG"><span>WCAG</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="UX"><span>UX Design</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Web accessibility: building inclusive user experiences
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.08</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 143</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4321</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Redux"><span>Redux</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="State"><span>State Management</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Redux Toolkit: simplifying state management in React
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.08</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 176</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5678</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 18</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Next"><span>Next.js</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="SSR"><span>SSR</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Re"><span>React</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Server-side rendering with Next.js: complete guide
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.07</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 8901</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 27</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Tailwind"><span>Tailwind CSS</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="CSS"><span>CSS</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Util"><span>Utility-First</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Tailwind CSS deep dive: utility-first styling approach
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.07</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 198</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 7234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 22</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="MongoDB"><span>MongoDB</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="NoSQL"><span>NoSQL</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="DB"><span>Database</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        MongoDB schema design patterns and best practices
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.06</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 167</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5432</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 14</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Socket"><span>WebSockets</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Real"><span>Real-time</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Node"><span>Node.js</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Real-time applications with WebSockets and Socket.io
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.06</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 189</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 6123</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 16</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Python"><span>Python</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Django"><span>Django</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="BE"><span>Backend</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Django REST framework: building robust web APIs
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.05</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 145</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4876</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Micro"><span>Microservices</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Arch"><span>Architecture</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Scale"><span>Scalability</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Microservices architecture: design principles and patterns
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.05</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 212</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 7654</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="ESLint"><span>ESLint</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Prettier"><span>Prettier</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Code"><span>Code Quality</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Code quality tools: ESLint and Prettier configuration
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.04</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 123</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 4123</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="E2E"><span>E2E Testing</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Cypress"><span>Cypress</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Play"><span>Playwright</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        End-to-end testing with Cypress and Playwright
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.04</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 156</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 12</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Svelte"><span>Svelte</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="FE"><span>Frontend</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="FW"><span>Framework</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Svelte introduction: the compiler-based framework
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.03</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 178</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5876</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="AI"><span>AI</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="ML"><span>Machine Learning</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Python"><span>Python</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Machine learning basics for web developers
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.03</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 234</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 8765</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 28</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Rust"><span>Rust</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="WASM"><span>WebAssembly</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Perf"><span>Performance</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        WebAssembly with Rust: high-performance web apps
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.02</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 189</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 6543</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 17</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card rounded-3 overflow-hidden">
+                  <a href="javascript:void(0)" class="position-relative">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="w-100 img-fluid">
+                  </a>
+                  <div class="mt-4 px-7 pb-7">
+                    <div class="d-flex gap-3 flex-column">
+                      <div class="tag-container">
+                        <div class="tag-wrapper">
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Deno"><span>Deno</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="TS"><span>TypeScript</span></a>
+                          <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag" data-abbr="Runtime"><span>Runtime</span></a>
+                          <span class="tag-more-count"></span>
+                        </div>
+                        <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
+                      </div>
+                      <a href="javascript:void(0)" class="fs-15 fw-bolder recent-article-title">
+                        Deno: the modern JavaScript runtime alternative
+                      </a>
+                      <div class="d-flex align-items-center gap-2 mt-2">
+                        <i class="ti ti-circle fs-2"></i>
+                        <p class="mb-0 fs-2 fw-semibold text-dark">2025.12.02</p>
+                      </div>
+                      <div class="d-flex align-items-center gap-3 mt-2">
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-heart"></i> 156</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-eye"></i> 5321</span>
+                        <span class="d-flex align-items-center gap-1 text-muted fs-2"><i class="ti ti-message"></i> 13</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- Pagination for Grid View -->
+            <nav aria-label="Page navigation" id="grid-pagination" class="mt-4">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled" id="grid-prev-page">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true"><i class="ti ti-chevron-left"></i></a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="javascript:void(0)" data-page="1">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="2">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="3">3</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="4">4</a></li>
+                <li class="page-item" id="grid-next-page">
+                  <a class="page-link" href="javascript:void(0)"><i class="ti ti-chevron-right"></i></a>
+                </li>
+              </ul>
+            </nav>
             <!-- List View (hidden by default) -->
             <div class="d-none" id="articles-list-view">
               <style>
@@ -4243,6 +5153,13 @@
                   background-color: rgba(var(--bs-primary-rgb), 0.06);
                   border-color: rgba(var(--bs-primary-rgb), 0.2);
                 }
+                #articles-list-view .article-row .fw-bold {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                }
               </style>
               <div class="d-flex flex-column gap-2">
                 <!-- Article 1 -->
@@ -4254,10 +5171,10 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Designing for user experience: the essential ux principles</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Web Development</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>UX Design</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>UI</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Web Development</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>UX Design</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>UI</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4282,9 +5199,9 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Mastering CSS Grid: a comprehensive guide for layouts</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>CSS</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Web Development</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Layout</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>CSS</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Web Development</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Layout</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4309,11 +5226,11 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Building responsive web apps with modern frameworks</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Vue.js</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Angular</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Next.js</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Nuxt</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Vue.js</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Angular</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Next.js</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Nuxt</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4338,8 +5255,8 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Introduction to TypeScript for JavaScript developers</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>TypeScript</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>JavaScript</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>TypeScript</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>JavaScript</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4364,9 +5281,9 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Getting started with React hooks and state management</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Hooks</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>State Management</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Hooks</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>State Management</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4391,10 +5308,10 @@
                     <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Best practices for API design and documentation</a>
                     <div class="tag-container">
                       <div class="tag-wrapper">
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>API</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>REST</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Documentation</span></span>
-                        <span class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Backend</span></span>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>API</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>REST</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Documentation</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Backend</span></a>
                         <span class="tag-more-count"></span>
                       </div>
                     </div>
@@ -4410,8 +5327,670 @@
                     </div>
                   </div>
                 </div>
+                <!-- Article 7 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Building scalable backend services with Node.js and Express</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Node.js</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Express</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Backend</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.14</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 156</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4532</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 8</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 8 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Optimizing database queries for better performance</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Database</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>SQL</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Performance</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.14</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 89</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 3241</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 6</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 9 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Advanced Git workflows and branching strategies</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Git</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Version Control</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>CI/CD</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.13</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 134</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5123</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 11</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 10 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Unit testing best practices with Jest and React Testing Library</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Testing</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Jest</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>TDD</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.13</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 167</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4892</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 14</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 11 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Getting started with AWS Lambda and serverless architecture</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>AWS</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Cloud</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Serverless</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.12</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 198</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 6234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 21</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 12 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Container orchestration with Docker and Kubernetes</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Docker</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Kubernetes</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>DevOps</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.12</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 221</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 7891</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 19</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 13 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Introduction to GraphQL: building modern APIs</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>GraphQL</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>API</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Apollo</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.11</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 145</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5432</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 16</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 14 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Web security fundamentals: protecting your applications</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Security</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Authentication</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>JWT</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.11</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 178</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 6123</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 13</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 15 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Core Web Vitals: improving your site's performance metrics</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Performance</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Optimization</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Web Vitals</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.10</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 132</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4567</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 9</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 16 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Building progressive web apps for offline-first experiences</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>PWA</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Mobile</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Service Worker</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.10</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 156</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 11</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 17 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Advanced Sass techniques for scalable stylesheets</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Sass</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>CSS</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Styling</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.09</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 98</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 3456</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 7</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 18 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Modern build tools: Webpack vs Vite comparison</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Webpack</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Vite</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Build Tools</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.09</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 187</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 6789</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 23</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 19 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Web accessibility: building inclusive user experiences</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Accessibility</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>WCAG</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>UX Design</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.08</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 143</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4321</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 20 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Redux Toolkit: simplifying state management in React</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Redux</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>State Management</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.08</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 176</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5678</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 18</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 21 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Server-side rendering with Next.js: complete guide</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Next.js</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>SSR</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>React</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.07</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 8901</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 27</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 22 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Tailwind CSS deep dive: utility-first styling approach</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Tailwind CSS</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>CSS</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Utility-First</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.07</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 198</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 7234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 22</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 23 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img3.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">MongoDB schema design patterns and best practices</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>MongoDB</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>NoSQL</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Database</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.06</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 167</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5432</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 14</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 24 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img4.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Real-time applications with WebSockets and Socket.io</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>WebSockets</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Real-time</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Node.js</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.06</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 189</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 6123</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 16</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 25 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img5.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Django REST framework: building robust web APIs</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Python</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Django</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Backend</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.05</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 145</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4876</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 11</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 26 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img6.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Microservices architecture: design principles and patterns</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Microservices</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Architecture</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Scalability</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.05</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 212</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 7654</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 24</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 27 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img7.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Code quality tools: ESLint and Prettier configuration</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>ESLint</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Prettier</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Code Quality</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.04</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 123</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 4123</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 9</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 28 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img8.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">End-to-end testing with Cypress and Playwright</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>E2E Testing</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Cypress</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Playwright</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.04</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 156</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 12</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 29 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img1.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Svelte introduction: the compiler-based framework</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Svelte</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Frontend</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Framework</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.03</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 178</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 5876</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 15</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Article 30 -->
+                <div class="article-row d-flex align-items-center p-3 rounded">
+                  <div style="width: 120px; flex-shrink: 0;">
+                    <img src="../assets/images/blog/blog-img2.jpg" alt="blog image" class="rounded" style="width: 100px; height: 67px; object-fit: cover;">
+                  </div>
+                  <div class="flex-grow-1 px-3">
+                    <a href="javascript:void(0)" class="fw-bold text-dark d-block mb-1 fs-4">Machine learning basics for web developers</a>
+                    <div class="tag-container">
+                      <div class="tag-wrapper">
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>AI</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Machine Learning</span></a>
+                        <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark card-tag"><span>Python</span></a>
+                        <span class="tag-more-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center px-3" style="width: 110px; flex-shrink: 0;">
+                    <span class="fs-3 text-muted">2025.12.03</span>
+                  </div>
+                  <div style="width: 180px; flex-shrink: 0;">
+                    <div class="d-flex align-items-center gap-3">
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-heart"></i> 234</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-eye"></i> 8765</span>
+                      <span class="d-flex align-items-center gap-1 text-muted fs-3"><i class="ti ti-message"></i> 28</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <!-- Pagination for List View -->
+            <nav aria-label="Page navigation" id="list-pagination" class="mt-4 d-none">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled" id="list-prev-page">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true"><i class="ti ti-chevron-left"></i></a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="javascript:void(0)" data-page="1">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="2">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)" data-page="3">3</a></li>
+                <li class="page-item" id="list-next-page">
+                  <a class="page-link" href="javascript:void(0)"><i class="ti ti-chevron-right"></i></a>
+                </li>
+              </ul>
+            </nav>
           </div>
           <div class="col-lg-3" id="sidebar-col">
             <!-- Banner 1 -->
@@ -4633,9 +6212,9 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Event</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>React</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Frontend</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Event</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4657,8 +6236,8 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Conference</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Vue.js</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Conference</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4680,10 +6259,10 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Workshop</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hands-on</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Beginner</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Workshop</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>JavaScript</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hands-on</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Beginner</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4705,9 +6284,9 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Meetup</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Network</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Tech</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Meetup</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Network</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Tech</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4729,8 +6308,8 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Seminar</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Online</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Seminar</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Online</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4752,9 +6331,9 @@
                         <div class="mt-auto pt-3">
                           <div class="tag-container">
                             <div class="tag-wrapper">
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hackathon</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>AI</span></p>
-                              <p class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Machine Learning</span></p>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Hackathon</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>AI</span></a>
+                              <a href="blog-posts.html?tag=" class="fs-2 px-2 rounded-pill bg-muted bg-opacity-25 text-dark mb-0 card-tag"><span>Machine Learning</span></a>
                               <span class="tag-more-count"></span>
                             </div>
                             <button class="tag-expand-btn"><i class="ti ti-chevron-down"></i>More</button>
@@ -4890,7 +6469,7 @@
         <!-- Footer Section Start -->
         <footer class="mt-7 pt-5 border-top">
           <div class="text-center mb-4">
-            <a href="#" class="logo-img mb-4 d-inline-block">
+            <a href="blog-posts.html" class="logo-img mb-4 d-inline-block">
               <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="MORINET" style="height: 40px;">
               <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="MORINET" style="height: 40px;">
             </a>
@@ -5156,7 +6735,7 @@
           <h6 class="mt-5 fw-semibold fs-4 mb-2">Card Height</h6>
 
           <div class="d-flex flex-row flex-wrap gap-3 customizer-box" role="group">
-            <input type="radio" class="btn-check" name="card-height" id="card-height-none" autocomplete="off" checked />
+            <input type="radio" class="btn-check" name="card-height" id="card-height-none" autocomplete="off" />
             <label class="btn p-9 btn-outline-primary" for="card-height-none">
               <i class="icon ti ti-layout fs-7 me-2"></i>Default
             </label>
@@ -5166,7 +6745,7 @@
               <i class="icon ti ti-text-wrap-disabled fs-7 me-2"></i>Clamp
             </label>
 
-            <input type="radio" class="btn-check" name="card-height" id="card-fixed-height" autocomplete="off" />
+            <input type="radio" class="btn-check" name="card-height" id="card-fixed-height" autocomplete="off" checked />
             <label class="btn p-9 btn-outline-primary" for="card-fixed-height">
               <i class="icon ti ti-arrows-vertical fs-7 me-2"></i>Fixed
             </label>
@@ -5535,7 +7114,8 @@
       setCardHeight(savedCardHeight);
       document.getElementById(savedCardHeight).checked = true;
     } else {
-      document.getElementById('card-height-none').checked = true;
+      setCardHeight('card-fixed-height');
+      document.getElementById('card-fixed-height').checked = true;
     }
   })();
 
@@ -5545,6 +7125,8 @@
     const listViewBtn = document.getElementById('list-view-btn');
     const gridView = document.getElementById('articles-grid-view');
     const listView = document.getElementById('articles-list-view');
+    const gridPagination = document.getElementById('grid-pagination');
+    const listPagination = document.getElementById('list-pagination');
 
     function setView(view) {
       if (view === 'grid') {
@@ -5552,11 +7134,15 @@
         listView.classList.add('d-none');
         gridViewBtn.classList.add('active');
         listViewBtn.classList.remove('active');
+        if (gridPagination) gridPagination.classList.remove('d-none');
+        if (listPagination) listPagination.classList.add('d-none');
       } else {
         gridView.classList.add('d-none');
         listView.classList.remove('d-none');
         gridViewBtn.classList.remove('active');
         listViewBtn.classList.add('active');
+        if (gridPagination) gridPagination.classList.add('d-none');
+        if (listPagination) listPagination.classList.remove('d-none');
       }
       localStorage.setItem('articlesView', view);
     }
@@ -5602,6 +7188,386 @@
       document.getElementById('tag-hide').checked = true;
     } else {
       document.getElementById('tag-show').checked = true;
+    }
+  })();
+
+  // Pagination System
+  (function() {
+    const ITEMS_PER_PAGE_GRID = 9;
+    const ITEMS_PER_PAGE_LIST = 10;
+
+    // Grid View Pagination
+    const gridView = document.getElementById('articles-grid-view');
+    const gridPagination = document.getElementById('grid-pagination');
+
+    if (gridView && gridPagination) {
+      const gridCards = gridView.querySelectorAll('.col-lg-4');
+      const totalGridPages = Math.ceil(gridCards.length / ITEMS_PER_PAGE_GRID);
+      let currentGridPage = 1;
+
+      function showGridPage(page) {
+        currentGridPage = page;
+        const start = (page - 1) * ITEMS_PER_PAGE_GRID;
+        const end = start + ITEMS_PER_PAGE_GRID;
+
+        gridCards.forEach((card, index) => {
+          if (index >= start && index < end) {
+            card.classList.remove('d-none');
+          } else {
+            card.classList.add('d-none');
+          }
+        });
+
+        updateGridPagination();
+      }
+
+      function updateGridPagination() {
+        const pageItems = gridPagination.querySelectorAll('.page-item:not(#grid-prev-page):not(#grid-next-page)');
+        pageItems.forEach(item => {
+          const pageNum = parseInt(item.querySelector('a').getAttribute('data-page'));
+          if (pageNum === currentGridPage) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        const prevBtn = document.getElementById('grid-prev-page');
+        const nextBtn = document.getElementById('grid-next-page');
+
+        if (currentGridPage === 1) {
+          prevBtn.classList.add('disabled');
+        } else {
+          prevBtn.classList.remove('disabled');
+        }
+
+        if (currentGridPage === totalGridPages) {
+          nextBtn.classList.add('disabled');
+        } else {
+          nextBtn.classList.remove('disabled');
+        }
+      }
+
+      gridPagination.querySelectorAll('.page-link[data-page]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = parseInt(this.getAttribute('data-page'));
+          showGridPage(page);
+        });
+      });
+
+      document.getElementById('grid-prev-page').querySelector('a').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentGridPage > 1) {
+          showGridPage(currentGridPage - 1);
+        }
+      });
+
+      document.getElementById('grid-next-page').querySelector('a').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentGridPage < totalGridPages) {
+          showGridPage(currentGridPage + 1);
+        }
+      });
+
+      showGridPage(1);
+    }
+
+    // List View Pagination
+    const listView = document.getElementById('articles-list-view');
+    const listPagination = document.getElementById('list-pagination');
+
+    if (listView && listPagination) {
+      const listRows = listView.querySelectorAll('.article-row');
+      const totalListPages = Math.ceil(listRows.length / ITEMS_PER_PAGE_LIST);
+      let currentListPage = 1;
+
+      function showListPage(page) {
+        currentListPage = page;
+        const start = (page - 1) * ITEMS_PER_PAGE_LIST;
+        const end = start + ITEMS_PER_PAGE_LIST;
+
+        listRows.forEach((row, index) => {
+          if (index >= start && index < end) {
+            row.classList.remove('d-none');
+          } else {
+            row.classList.add('d-none');
+          }
+        });
+
+        updateListPagination();
+      }
+
+      function updateListPagination() {
+        const pageItems = listPagination.querySelectorAll('.page-item:not(#list-prev-page):not(#list-next-page)');
+        pageItems.forEach(item => {
+          const pageNum = parseInt(item.querySelector('a').getAttribute('data-page'));
+          if (pageNum === currentListPage) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        const prevBtn = document.getElementById('list-prev-page');
+        const nextBtn = document.getElementById('list-next-page');
+
+        if (currentListPage === 1) {
+          prevBtn.classList.add('disabled');
+        } else {
+          prevBtn.classList.remove('disabled');
+        }
+
+        if (currentListPage === totalListPages) {
+          nextBtn.classList.add('disabled');
+        } else {
+          nextBtn.classList.remove('disabled');
+        }
+      }
+
+      listPagination.querySelectorAll('.page-link[data-page]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = parseInt(this.getAttribute('data-page'));
+          showListPage(page);
+        });
+      });
+
+      document.getElementById('list-prev-page').querySelector('a').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentListPage > 1) {
+          showListPage(currentListPage - 1);
+        }
+      });
+
+      document.getElementById('list-next-page').querySelector('a').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentListPage < totalListPages) {
+          showListPage(currentListPage + 1);
+        }
+      });
+
+      showListPage(1);
+    }
+  })();
+
+  // Set tag links href based on tag name
+  // Run after Owl Carousel initialization to include cloned items
+  $(function() {
+    setTimeout(function() {
+      document.querySelectorAll('.card-tag').forEach(tag => {
+        const tagName = tag.querySelector('span')?.textContent?.trim();
+        if (tagName) {
+          // Check if tag is within Local Topics section
+          const isLocalTopics = tag.closest('#local-topics-carousel-wrapper') !== null;
+          const section = isLocalTopics ? '&section=local-topics' : '';
+          tag.href = 'blog-posts.html?tag=' + encodeURIComponent(tagName) + section;
+        }
+      });
+    }, 100);
+  });
+
+  // Tag Filtering System
+  (function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterTag = urlParams.get('tag');
+    const section = urlParams.get('section');
+
+    if (!filterTag) return;
+
+    const decodedTag = decodeURIComponent(filterTag);
+    console.log('Filtering by tag:', decodedTag, 'section:', section);
+
+    // Get all card containers
+    const gridView = document.getElementById('articles-grid-view');
+    const listView = document.getElementById('articles-list-view');
+    const featuredContent = document.getElementById('featured-content');
+    const featuredCardsRow = document.getElementById('featured-cards-row');
+    const localTopicsCarousel = document.getElementById('local-topics-carousel-wrapper');
+    const eventPickup = document.getElementById('event-pickup-section');
+    const mediaHighlight = document.getElementById('media-highlight-section');
+
+    // Hide sections that don't need filtering
+    if (featuredContent) featuredContent.classList.add('d-none');
+    if (featuredCardsRow) featuredCardsRow.classList.add('d-none');
+    if (eventPickup) eventPickup.classList.add('d-none');
+    if (mediaHighlight) mediaHighlight.classList.add('d-none');
+
+    // Different behavior based on section
+    if (section === 'local-topics') {
+      // For Local Topics: hide Recent Articles, show filtered Local Topics cards as grid
+      if (gridView) gridView.classList.add('d-none');
+      if (listView) listView.classList.add('d-none');
+      const recentArticlesHeader = document.getElementById('recent-articles-header');
+      if (recentArticlesHeader) recentArticlesHeader.classList.add('d-none');
+
+      // Transform carousel to filtered grid view
+      if (localTopicsCarousel) {
+        const carouselItems = localTopicsCarousel.querySelectorAll('.owl-carousel .item');
+        const header = localTopicsCarousel.querySelector('#local-topics-header');
+        const carousel = localTopicsCarousel.querySelector('.owl-carousel');
+
+        // Hide original carousel
+        if (carousel) carousel.classList.add('d-none');
+
+        // Create grid container for filtered cards
+        let filteredGrid = localTopicsCarousel.querySelector('.filtered-grid');
+        if (!filteredGrid) {
+          filteredGrid = document.createElement('div');
+          filteredGrid.className = 'filtered-grid row';
+          localTopicsCarousel.appendChild(filteredGrid);
+        }
+        filteredGrid.innerHTML = '';
+
+        let visibleCards = 0;
+        carouselItems.forEach(item => {
+          const tags = item.querySelectorAll('.card-tag span');
+          const tagNames = Array.from(tags).map(t => t.textContent.trim());
+          const hasTag = tagNames.some(t => t.toLowerCase() === decodedTag.toLowerCase());
+
+          if (hasTag) {
+            const col = document.createElement('div');
+            col.className = 'col-lg-4 col-md-6 mb-4';
+            col.innerHTML = item.innerHTML;
+            filteredGrid.appendChild(col);
+            visibleCards++;
+          }
+        });
+
+        // Show "no results" if no matches
+        if (visibleCards === 0) {
+          filteredGrid.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <div class="text-muted">
+                <i class="ti ti-search-off fs-1 d-block mb-3"></i>
+                <p class="fs-5 mb-0">「${decodedTag}」タグの記事が見つかりませんでした</p>
+              </div>
+            </div>
+          `;
+        }
+
+        // Update header
+        if (header) {
+          const h2 = header.querySelector('h2');
+          const subtitle = header.querySelector('p');
+          if (h2) h2.innerHTML = `Local Topics <span class="text-primary fs-6 ms-2">${decodedTag}</span>`;
+          if (subtitle) subtitle.classList.add('d-none');
+
+          // Add clear filter button
+          let clearBtn = header.querySelector('.clear-filter-btn');
+          if (!clearBtn) {
+            clearBtn = document.createElement('a');
+            clearBtn.href = 'blog-posts.html';
+            clearBtn.className = 'btn btn-sm btn-outline-secondary clear-filter-btn ms-auto';
+            clearBtn.innerHTML = '<i class="ti ti-x me-1"></i>フィルター解除';
+            header.appendChild(clearBtn);
+          }
+        }
+      }
+    } else {
+      // For Recent Articles: hide Local Topics, filter Recent Articles
+      if (localTopicsCarousel) localTopicsCarousel.classList.add('d-none');
+
+      // Filter cards in grid view
+      let visibleGridCards = 0;
+      if (gridView) {
+        const cards = gridView.querySelectorAll(':scope > [class*="col-"]');
+        cards.forEach(card => {
+          const tags = card.querySelectorAll('.card-tag span');
+          const tagNames = Array.from(tags).map(t => t.textContent.trim());
+          const hasTag = tagNames.some(t => t.toLowerCase() === decodedTag.toLowerCase());
+          if (!hasTag) {
+            card.classList.add('d-none');
+          } else {
+            card.classList.remove('d-none');
+            visibleGridCards++;
+          }
+        });
+
+        // Show "no results" message if no cards match
+        let noResultsMsg = gridView.querySelector('.no-results-message');
+        if (visibleGridCards === 0) {
+          if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'col-12 no-results-message text-center py-5';
+            noResultsMsg.innerHTML = `
+              <div class="text-muted">
+                <i class="ti ti-search-off fs-1 d-block mb-3"></i>
+                <p class="fs-5 mb-0">「${decodedTag}」タグの記事が見つかりませんでした</p>
+              </div>
+            `;
+            gridView.appendChild(noResultsMsg);
+          }
+        } else if (noResultsMsg) {
+          noResultsMsg.remove();
+        }
+      }
+
+      // Filter cards in list view
+      let visibleListRows = 0;
+      if (listView) {
+        const rows = listView.querySelectorAll('.article-row');
+        rows.forEach(row => {
+          const tags = row.querySelectorAll('.card-tag span');
+          const tagNames = Array.from(tags).map(t => t.textContent.trim());
+          const hasTag = tagNames.some(t => t.toLowerCase() === decodedTag.toLowerCase());
+          if (!hasTag) {
+            row.classList.add('d-none');
+          } else {
+            row.classList.remove('d-none');
+            visibleListRows++;
+          }
+        });
+
+        // Show "no results" message if no rows match
+        const listContainer = listView.querySelector('.d-flex.flex-column');
+        let noResultsMsgList = listView.querySelector('.no-results-message');
+        if (visibleListRows === 0 && listContainer) {
+          if (!noResultsMsgList) {
+            noResultsMsgList = document.createElement('div');
+            noResultsMsgList.className = 'no-results-message text-center py-5';
+            noResultsMsgList.innerHTML = `
+              <div class="text-muted">
+                <i class="ti ti-search-off fs-1 d-block mb-3"></i>
+                <p class="fs-5 mb-0">「${decodedTag}」タグの記事が見つかりませんでした</p>
+              </div>
+            `;
+            listContainer.appendChild(noResultsMsgList);
+          }
+        } else if (noResultsMsgList) {
+          noResultsMsgList.remove();
+        }
+      }
+    }
+
+    // Update Recent Articles header (only for non-local-topics)
+    if (section !== 'local-topics') {
+      const recentArticlesTitle = document.getElementById('recent-articles-title');
+      const recentArticlesHeaderRow = document.getElementById('recent-articles-header');
+      if (recentArticlesTitle && recentArticlesHeaderRow) {
+        const headerContainer = recentArticlesTitle.parentElement;
+
+        recentArticlesTitle.innerHTML = `<span class="text-primary">${decodedTag}</span> の記事`;
+        recentArticlesTitle.style.whiteSpace = 'nowrap';
+
+        // Add clear filter button
+        const clearBtn = document.createElement('a');
+        clearBtn.href = 'blog-posts.html';
+        clearBtn.className = 'btn btn-sm btn-outline-secondary';
+        clearBtn.innerHTML = '<i class="ti ti-x me-1"></i>フィルター解除';
+
+        const viewToggle = recentArticlesHeaderRow.querySelector('.d-flex.align-items-center.gap-1');
+        if (viewToggle) {
+          viewToggle.insertAdjacentElement('beforebegin', clearBtn);
+          clearBtn.classList.add('me-3');
+        } else {
+          recentArticlesHeaderRow.appendChild(clearBtn);
+        }
+
+        // Remove subtitle
+        const subtitle = headerContainer.querySelector('.text-muted');
+        if (subtitle) subtitle.style.display = 'none';
+      }
     }
   })();
 
