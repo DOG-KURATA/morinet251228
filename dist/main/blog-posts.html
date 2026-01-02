@@ -8027,14 +8027,31 @@
     if (this.checked) applyLanguage('ja');
   });
 
-  // Load saved language preference
-  const savedLang = localStorage.getItem('preferred-language') || 'en';
-  if (savedLang === 'ja') {
-    document.getElementById('lang-ja').checked = true;
-    applyLanguage('ja');
-  } else {
-    document.getElementById('lang-en').checked = true;
+  // Load saved language preference and apply on page load
+  function initLanguage() {
+    const savedLang = localStorage.getItem('preferred-language') || 'en';
+    console.log('[i18n] Initializing language:', savedLang);
+    if (savedLang === 'ja') {
+      const langJa = document.getElementById('lang-ja');
+      if (langJa) langJa.checked = true;
+      applyLanguage('ja');
+    } else {
+      const langEn = document.getElementById('lang-en');
+      if (langEn) langEn.checked = true;
+    }
   }
+
+  // Run immediately since script is at end of body
+  initLanguage();
+
+  // Also run after window load to ensure all dynamic content is translated
+  window.addEventListener('load', function() {
+    const savedLang = localStorage.getItem('preferred-language') || 'en';
+    if (savedLang === 'ja') {
+      console.log('[i18n] Re-applying Japanese on window load');
+      applyLanguage('ja');
+    }
+  });
 </script>
 </body>
 
