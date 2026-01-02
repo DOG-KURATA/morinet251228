@@ -16,6 +16,43 @@
 
   <title>Modernize Bootstrap Admin</title>
   <style>
+    /* Background Color Animation - Pattern 1: Rainbow Pastel (7 colors, slow transition) */
+    @keyframes bg-rainbow-pastel {
+      0%, 100% { background-color: #fff5f5; }      /* Pastel Pink */
+      14.28% { background-color: #fff8e6; }        /* Pastel Peach */
+      28.57% { background-color: #fffde6; }        /* Pastel Yellow */
+      42.85% { background-color: #e8f5e9; }        /* Pastel Green */
+      57.14% { background-color: #e3f2fd; }        /* Pastel Blue */
+      71.42% { background-color: #ede7f6; }        /* Pastel Purple */
+      85.71% { background-color: #fce4ec; }        /* Pastel Rose */
+    }
+
+    /* Background Color Animation - Pattern 2: Ocean Breeze (7 colors, calm flow) */
+    @keyframes bg-ocean-breeze {
+      0%, 100% { background-color: #e0f7fa; }      /* Light Cyan */
+      14.28% { background-color: #e1f5fe; }        /* Pale Sky */
+      28.57% { background-color: #e8eaf6; }        /* Soft Lavender */
+      42.85% { background-color: #f3e5f5; }        /* Light Orchid */
+      57.14% { background-color: #fce4ec; }        /* Blush Pink */
+      71.42% { background-color: #fff3e0; }        /* Warm Sand */
+      85.71% { background-color: #e8f5e9; }        /* Mint Fresh */
+    }
+
+    /* Apply Rainbow Pastel animation */
+    body.bg-anim-rainbow .body-wrapper {
+      animation: bg-rainbow-pastel 42s ease-in-out infinite;
+    }
+
+    /* Apply Ocean Breeze animation */
+    body.bg-anim-ocean .body-wrapper {
+      animation: bg-ocean-breeze 42s ease-in-out infinite;
+    }
+
+    /* Ensure smooth transition when animation is removed */
+    .body-wrapper {
+      transition: background-color 1s ease;
+    }
+
     /* Hover Effect: Lift */
     body.hover-lift .card,
     body.hover-lift .leadership-carousel .item > div {
@@ -6853,6 +6890,25 @@
               <i class="icon ti ti-language fs-7 me-2"></i>日本語
             </label>
           </div>
+
+          <h6 class="mt-5 fw-semibold fs-4 mb-2" data-i18n="bgAnimation">Background Animation</h6>
+
+          <div class="d-flex flex-row gap-3 customizer-box" role="group">
+            <input type="radio" class="btn-check" name="bg-animation" id="bg-anim-none" autocomplete="off" checked />
+            <label class="btn p-9 btn-outline-primary" for="bg-anim-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="No animation">
+              <i class="icon ti ti-ban fs-7 me-2"></i><span data-i18n="off">Off</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="bg-animation" id="bg-anim-rainbow" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="bg-anim-rainbow" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Rainbow pastel colors">
+              <i class="icon ti ti-rainbow fs-7 me-2"></i><span data-i18n="rainbow">Rainbow</span>
+            </label>
+
+            <input type="radio" class="btn-check" name="bg-animation" id="bg-anim-ocean" autocomplete="off" />
+            <label class="btn p-9 btn-outline-primary" for="bg-anim-ocean" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ocean breeze colors">
+              <i class="icon ti ti-wave-sine fs-7 me-2"></i><span data-i18n="ocean">Ocean</span>
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -7948,7 +8004,12 @@
         more: 'More',
         // View Toggle
         gridView: 'Grid View',
-        listView: 'List View'
+        listView: 'List View',
+        // Background Animation
+        bgAnimation: 'Background Animation',
+        off: 'Off',
+        rainbow: 'Rainbow',
+        ocean: 'Ocean'
       },
       ja: {
         // Settings Panel
@@ -8004,7 +8065,12 @@
         more: 'もっと見る',
         // View Toggle
         gridView: 'グリッド表示',
-        listView: 'リスト表示'
+        listView: 'リスト表示',
+        // Background Animation
+        bgAnimation: '背景アニメーション',
+        off: 'オフ',
+        rainbow: 'レインボー',
+        ocean: 'オーシャン'
       }
   };
 
@@ -8096,6 +8162,47 @@
       applyLanguage('ja');
     }
   });
+
+  // ========================================
+  // Background Animation System
+  // ========================================
+  const bgAnimClasses = ['bg-anim-rainbow', 'bg-anim-ocean'];
+
+  function setBgAnimation(animType) {
+    // Remove all animation classes
+    bgAnimClasses.forEach(cls => document.body.classList.remove(cls));
+
+    // Add selected animation class
+    if (animType && animType !== 'none') {
+      document.body.classList.add('bg-anim-' + animType);
+    }
+
+    // Save to localStorage
+    localStorage.setItem('bgAnimation', animType || 'none');
+  }
+
+  // Event listeners for background animation radio buttons
+  document.getElementById('bg-anim-none')?.addEventListener('change', function() {
+    if (this.checked) setBgAnimation('none');
+  });
+  document.getElementById('bg-anim-rainbow')?.addEventListener('change', function() {
+    if (this.checked) setBgAnimation('rainbow');
+  });
+  document.getElementById('bg-anim-ocean')?.addEventListener('change', function() {
+    if (this.checked) setBgAnimation('ocean');
+  });
+
+  // Load saved background animation on page load
+  (function initBgAnimation() {
+    const savedAnim = localStorage.getItem('bgAnimation') || 'none';
+    if (savedAnim !== 'none') {
+      const radioBtn = document.getElementById('bg-anim-' + savedAnim);
+      if (radioBtn) {
+        radioBtn.checked = true;
+        setBgAnimation(savedAnim);
+      }
+    }
+  })();
 </script>
 </body>
 
